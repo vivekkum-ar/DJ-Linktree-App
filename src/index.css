@@ -38,6 +38,42 @@
   font-family: "Poppins-Thin";
   src: url("/src/assets/fonts/Poppins-Thin.ttf") format("truetype"); 
 }
+@font-face {
+  font-family: "Merienda-Black";
+  src: url("/src/assets/fonts/Merienda-Black.ttf") format("truetype"); 
+}
+@font-face {
+  font-family: "Merienda-Bold";
+  src: url("/src/assets/fonts/Merienda-Bold.ttf") format("truetype"); 
+}
+@font-face {
+  font-family: "Merienda-ExtraBold";
+  src: url("/src/assets/fonts/Merienda-ExtraBold.ttf") format("truetype"); 
+}
+@font-face {
+  font-family: "Merienda-ExtraLight";
+  src: url("/src/assets/fonts/Merienda-ExtraLight.ttf") format("truetype"); 
+}
+@font-face {
+  font-family: "Merienda-Light";
+  src: url("/src/assets/fonts/Merienda-Light.ttf") format("truetype"); 
+}
+@font-face {
+  font-family: "Merienda-Medium";
+  src: url("/src/assets/fonts/Merienda-Medium.ttf") format("truetype"); 
+}
+@font-face {
+  font-family: "Merienda-Regular";
+  src: url("/src/assets/fonts/Merienda-Regular.ttf") format("truetype"); 
+}
+@font-face {
+  font-family: "Merienda-SemiBold";
+  src: url("/src/assets/fonts/Merienda-SemiBold.ttf") format("truetype"); 
+}
+@font-face {
+  font-family: "Merienda-Thin";
+  src: url("/src/assets/fonts/Merienda-Thin.ttf") format("truetype"); 
+}
 
 @layer base {
   :root {

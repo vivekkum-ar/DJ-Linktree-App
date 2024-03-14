@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Link } from "react-router-dom"
+import { Icon } from "@iconify/react/dist/iconify.js"
 
 const Login = () => {
   const formSchema = z.object({
@@ -39,8 +39,8 @@ const Login = () => {
     console.log(values)
   }
   return (
-    <div className="w-full h-screen flex justify-center outline p-2 border">
-      <div className="w-2/5 flex flex-col justify-center items-center outline-1 shadow-gray-600 shadow-xl rounded-2xl p-6">
+    <div className="w-full h-screen flex justify-center p-2 border">
+      <div className="w-2/5 flex flex-col justify-center items-center shadow-gray-600 shadow-xl rounded-2xl p-6 border border-gray-400">
         <div className="flex flex-col gap-y-1 justify-center items-center ">
           <h1 className="text-4xl font-pbold">
             Reset Password
@@ -64,7 +64,7 @@ const Login = () => {
               </FormItem>
             )}
             />
-          <Button className="flex w-[75%] justify-self-center font-pmedium" type="submit">Submit</Button>
+          <Button className="flex w-[75%] justify-self-center font-pmedium" type="submit">Submit<Icon icon="material-symbols:lock-reset-sharp" width="60px" height="60px" className="text-violet-500 scale-150" /></Button>
         </form>
       </Form>
       <div className="flex flex-col gap-y-1 justify-center items-center ">

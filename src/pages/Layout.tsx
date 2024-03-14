@@ -1,3 +1,4 @@
+import Navbar from '@/components/Navbar';
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
@@ -10,7 +11,8 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ }) => {
   return (
     <>
-      <div className='max-w-screen-xl mx-auto my-0.5 flex flex-col justify-center items-center h-screen'>Layout
+    <Navbar className=""/>
+      <div className='mt-14 max-w-screen-xl mx-auto my-0.5 flex flex-col justify-center items-center h-screen'>
         <Outlet></Outlet>
       </div>
     </>

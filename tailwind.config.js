@@ -17,6 +17,13 @@ export default {
 			pbold: ["Poppins-Bold", "sans-serif"],
 			pextrabold: ["Poppins-ExtraBold", "sans-serif"],
 			pblack: ["Poppins-Black", "sans-serif"],
+			mlight: ["Merienda-Light", "sans-serif"],
+			mregular: ["Merienda-Regular", "sans-serif"],
+			mmedium: ["Merienda-Medium", "sans-serif"],
+			msemibold: ["Merienda-SemiBold", "sans-serif"],
+			mbold: ["Merienda-Bold", "sans-serif"],
+			mextrabold: ["Merienda-ExtraBold", "sans-serif"],
+			mblack: ["Merienda-Black", "sans-serif"],
 		  },
   		borderRadius: {
   			lg: 'var(--radius)',
