@@ -14,11 +14,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { Link } from "react-router-dom"
 
-const Signup = () => {
+const Login = () => {
   const formSchema = z.object({
-    username: z.string().max(20,{
-      message: "Name should be less than 20 characters.",
-    }),
     email: z.string().email({
       message: "Please enter correct Email.",
     }),
@@ -44,32 +41,16 @@ const Signup = () => {
   return (
     <div className="w-full h-screen flex justify-center outline p-2 border">
       <div className="w-2/5 flex flex-col justify-center items-center outline-1 shadow-gray-600 shadow-xl rounded-2xl p-6">
-      <div className="flex flex-col gap-y-1 justify-center items-center ">
-      <h1 className="text-4xl font-pbold">
-        Sign Up
-      </h1>
-      <h6 className="text-md font-pregular mb-3 text-gray-400">
-      Create an account to get started
-      </h6>
-      </div>
+        <div className="flex flex-col gap-y-1 justify-center items-center ">
+          <h1 className="text-4xl font-pbold">
+            Reset Password
+          </h1>
+          <h6 className="text-md font-pregular mb-3 text-gray-400">
+            Enter your email address to reset your password
+          </h6>
+        </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full px-5">
-          <FormField
-            control={form.control}
-            name="username"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="font-pmedium">name</FormLabel>
-                <FormControl>
-                  <Input className="font-pregular" placeholder="cool person" {...field} />
-                </FormControl>
-                {/* <FormDescription className="font-pregular">
-                  This is your public display name.
-                </FormDescription> */}
-                <FormMessage />
-              </FormItem>
-            )}
-            />
           <FormField
             control={form.control}
             name="email"
@@ -78,22 +59,6 @@ const Signup = () => {
                 <FormLabel className="font-pmedium">Email</FormLabel>
                 <FormControl>
                   <Input className="font-pregular" placeholder="coolperson@example.com" {...field} />
-                </FormControl>
-                {/* <FormDescription className="font-pregular">
-                  This is your public display name.
-                </FormDescription> */}
-                <FormMessage />
-              </FormItem>
-            )}
-            />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="font-pmedium">Password</FormLabel>
-                <FormControl>
-                  <Input className="font-pregular" placeholder="●●●●●●●●" type="password" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -104,7 +69,7 @@ const Signup = () => {
       </Form>
       <div className="flex flex-col gap-y-1 justify-center items-center ">
           <h6 className="text-md font-pmedium mb-3 text-gray-400">
-          Already have an account? <Link to="/login" className="text-violet-500 font-pmedium underline">Login</Link>
+          Go back to <Link to="/login" className="text-violet-500 font-pmedium underline">Login</Link>
           </h6>
         </div>
             </div>
@@ -112,4 +77,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default Login

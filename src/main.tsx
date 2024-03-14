@@ -12,6 +12,7 @@ import NoPage from './pages/NoPage';
 import '@ionic/react/css/core.css';
 import { createRoot } from 'react-dom/client';
 import { setupIonicReact } from '@ionic/react';
+import ForgotPassword from './pages/Forgotpassword';
 
 const App = () => {
   setupIonicReact();
@@ -35,6 +36,7 @@ const App = () => {
             <Route path='Home' element={<Home theme={theme} updateTheme={setTheme}  />}></Route>
             <Route path='Login' element={<Login />}></Route>
             <Route path='Signup' element={<Signup />}></Route>
+            <Route path='Forgotpassword' element={<ForgotPassword />}></Route>
             <Route path='About' element={<About />}></Route>
             <Route path="legal" element={<Terms />} />
             <Route path="legal/terms" element={<Terms />} />
