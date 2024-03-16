@@ -14,40 +14,40 @@ import { Link } from 'react-router-dom';
  
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
+    title: "Privacy Policy",
+    href: "/docs/legal/privacy-policy",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
+      "Details on how we collect, use, and protect your personal information.",
+},
+{
+    title: "Terms & Conditions",
+    href: "/docs/legal/terms-conditions",
     description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
+      "The rules and guidelines for using our services and accessing our website.",
+},
+{
+    title: "Usage of Data",
+    href: "/docs/legal/data-usage",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
+      "Information on how we handle, store, and utilize the data you provide.",
+},
+  // {
+  //   title: "Scroll-area",
+  //   href: "/docs/primitives/scroll-area",
+  //   description: "Visually or semantically separates content.",
+  // },
+  // {
+  //   title: "Tabs",
+  //   href: "/docs/primitives/tabs",
+  //   description:
+  //     "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+  // },
+  // {
+  //   title: "Tooltip",
+  //   href: "/docs/primitives/tooltip",
+  //   description:
+  //     "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  // },
 ]
  
 export function NavigationMenu1() {
@@ -71,30 +71,28 @@ export function NavigationMenu1() {
                     <div className="mb-2 mt-4 text-lg font-medium">
                       DJ QR App
                     </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components that you can copy and
-                      paste into your apps. Accessible. Customizable. Open
-                      Source.
+                    <p className="text-sm leading-tight text-muted-foreground text-justify">
+                    Effortlessly showcase all your social media profiles and links in one place. Simple to set up, fully customizable, and designed to enhance your online presence.
                     </p>
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+              <ListItem href="/getting-started" title="Introduction">
+                How to get started with this QR app?
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
+              <ListItem href="/adding-your-handles" title="Adding Links">
+                How to add your social media handles at one place?
               </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
+              <ListItem href="/Services" title="Services">
+                Explore the range of services we provide related to social media.
               </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Legal</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+            <ul className="grid w-[400px] gap-3 p-4 md:grid-cols-1 ">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
@@ -108,11 +106,43 @@ export function NavigationMenu1() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link to="/docs" >
+          <Link to="/features" >
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
+              Features
             </NavigationMenuLink>
           </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link to="/support" >
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Support
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link to="/blogs" >
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Blog
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Templates</NavigationMenuTrigger>
+<NavigationMenuContent>
+  <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-1">
+    
+    <ListItem href="/template-gallery" title="Template Gallery">
+      Browse a variety of templates to personalize your QR profile.
+    </ListItem>
+    <ListItem href="/customization-guide" title="Customization Guide">
+      Learn how to customize colors, fonts, and layouts for your template.
+    </ListItem>
+    <ListItem href="/examples" title="Examples">
+      Explore examples of QR profiles created by others for inspiration.
+    </ListItem>
+  </ul>
+</NavigationMenuContent>
+
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

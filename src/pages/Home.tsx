@@ -11,7 +11,7 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className='w-full outline h-screen'>
+    <div className='w-full h-screen'>
       <IonButton id="present-alert">Click Me</IonButton>
       <IonAlert
         isOpen={isOpen}
