@@ -13,6 +13,7 @@ import '@ionic/react/css/core.css';
 import { createRoot } from 'react-dom/client';
 import { setupIonicReact } from '@ionic/react';
 import ForgotPassword from './pages/Forgotpassword';
+import { ThemeProvider } from './components/theme-provider';
 
 const App = () => {
   setupIonicReact();
@@ -29,6 +30,7 @@ const App = () => {
 
   return (
     <StrictMode>
+      <ThemeProvider>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout theme={theme} updateTheme={setTheme} />}>
@@ -45,6 +47,7 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
+      </ThemeProvider>
     </StrictMode>
   );
 };
