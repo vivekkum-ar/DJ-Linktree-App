@@ -191,7 +191,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
-    <div className={`flex flex-col justify-center items-center ${className}`}>
+    <div className={`flex flex-col justify-center items-center ${className} z-30`}>
       <div className="flex flex-row w-full pe-6 py-2 top-0 fixed justify-between">
 
         <div className={`font-mbold flex justify-center text-3xl flex-row w-[5%] ms-6 h-12 items-center`}>

@@ -39,7 +39,7 @@ const Login = () => {
     console.log(values)
   }
   return (
-    <div className="w-full h-screen flex justify-center p-2 border">
+    <div className="w-full h-screen flex justify-center p-2 mt-4">
       <div className="w-2/5 flex flex-col justify-center items-center shadow-gray-600 shadow-xl rounded-2xl p-6 border border-gray-400">
         <div className="flex flex-col gap-y-1 justify-center items-center ">
           <h1 className="text-4xl font-pbold">

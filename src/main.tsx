@@ -1,4 +1,4 @@
-import { StrictMode, useEffect, useState } from 'react'
+import { createContext, StrictMode, useEffect, useState } from 'react'
 import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from './pages/Layout';
@@ -15,8 +15,18 @@ import { setupIonicReact } from '@ionic/react';
 import ForgotPassword from './pages/Forgotpassword';
 import { ThemeProvider } from './components/theme-provider';
 
+// Define the type for your context (if you have one)
+// type ContextType = {
+  // Define properties, e.g., isLoggedIn: boolean;
+//   setUser:any,
+//   user:any
+// };
+
+export const UserContext = createContext<any>(null);
+
 const App = () => {
   setupIonicReact();
+  const [user,setUser] = useState(null);
   // Retrieve the theme from localStorage or use 'dark' as the default
   const storedTheme = localStorage.getItem('theme') || 'media';
 
@@ -30,12 +40,13 @@ const App = () => {
 
   return (
     <StrictMode>
+      <UserContext.Provider value={{user,setUser}}>
       <ThemeProvider>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Layout theme={theme} updateTheme={setTheme} />}>
-            <Route index element={<Home theme={theme} updateTheme={setTheme}  />}></Route>
-            <Route path='Home' element={<Home theme={theme} updateTheme={setTheme}  />}></Route>
+          <Route path='/' element={<Layout/>}>
+            <Route index element={<Home />}></Route>
+            <Route path='Home' element={<Home />}></Route>
             <Route path='Login' element={<Login />}></Route>
             <Route path='Signup' element={<Signup />}></Route>
             <Route path='Forgotpassword' element={<ForgotPassword />}></Route>
@@ -48,6 +59,7 @@ const App = () => {
         </Routes>
       </BrowserRouter>
       </ThemeProvider>
+      </UserContext.Provider>
     </StrictMode>
   );
 };

@@ -4,8 +4,8 @@ import React, { useState } from 'react'
 
 interface HomeProps {
   // Add your prop types here
-  theme: string;
-  updateTheme: Function;
+  // theme: string;
+  // updateTheme: Function;
 }
 
 const Home: React.FC<HomeProps> = ({ }) => {

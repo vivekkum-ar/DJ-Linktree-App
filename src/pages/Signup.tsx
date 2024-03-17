@@ -11,10 +11,19 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "@iconify/react"
+// import { auth } from "@/firebase"
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
+import { useToast } from "@/hooks/use-toast"
+import { useContext } from "react"
+import { UserContext } from "@/main"
+import { auth } from "@/firebase"
 
 const Signup = () => {
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const formSchema = z.object({
     username: z.string().max(20, {
       message: "Name should be less than 20 characters.",
@@ -39,10 +48,57 @@ const Signup = () => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values)
+    console.log(values);
+    // const auth = getAuth();
+    createUserWithEmailAndPassword(auth, values.email, values.password)
+      .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        setUser(user);
+        console.log(values);
+        console.log(user);
+        updateProfile(userCredential.user, {
+          displayName: values.username, photoURL: ""
+        }).then(() => {
+          // Profile updated!
+          toast({
+            title: "Sign-Up Successful.",
+            description: `Your account is ready. Please log in to continue.`,
+            classes: "border-green-500 border-2",
+            duration: 3000,
+            direction: "top"
+          });
+          // ...
+        }).catch((error) => {
+          // An error occurred
+          toast({
+            title: `Error ${error.code}`,
+            description: error.message,
+            classes: "border-red-500 border-2",
+            duration: 3000,
+            direction: "top"
+          });
+          // ...
+        });
+        navigate("/home");
+      })
+      .catch((error) => {
+        toast({
+          title: `Error ${error.code}`,
+          description: error.message,
+          classes: "border-red-500 border-2",
+          duration: 3000,
+          direction: "top"
+        });
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // ..
+      });
+    console.log(user);
   }
+
   return (
-    <div className="w-full h-screen flex justify-center p-2 border">
+    <div className="w-full h-screen flex justify-center p-2 mt-4">
       <div className="w-2/5 flex flex-col justify-center items-center shadow-gray-600 shadow-xl rounded-2xl p-6 border border-gray-400">
         <div className="flex flex-col gap-y-1 justify-center items-center ">
           <h1 className="text-4xl font-pbold">
