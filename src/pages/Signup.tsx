@@ -14,11 +14,11 @@ import { Input } from "@/components/ui/input"
 import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "@iconify/react"
 // import { auth } from "@/firebase"
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth"
 import { useToast } from "@/hooks/use-toast"
 import { useContext } from "react"
 import { UserContext } from "@/main"
-import { auth } from "@/firebase"
+import { auth, provider } from "@/firebase"
 
 const Signup = () => {
   const { user, setUser } = useContext(UserContext);
@@ -48,15 +48,15 @@ const Signup = () => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    // console.log(values);
     // const auth = getAuth();
     createUserWithEmailAndPassword(auth, values.email, values.password)
       .then((userCredential) => {
         // Signed up 
         const user = userCredential.user;
         setUser(user);
-        console.log(values);
-        console.log(user);
+        // console.log(values);
+        // console.log(user);
         updateProfile(userCredential.user, {
           displayName: values.username, photoURL: ""
         }).then(() => {
@@ -94,19 +94,58 @@ const Signup = () => {
         // const errorMessage = error.message;
         // ..
       });
-    console.log(user);
+    // console.log(user);
   }
 
+  const googleProviderSignIn = () => {
+    // console.log("first");
+    signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential?.accessToken;
+    // The signed-in user info.
+    // console.log("token",token);
+    const user = result.user;
+    // console.log("user",user);
+    setUser(user);
+    // IdP data available using getAdditionalUserInfo(result)
+    toast({
+      title: "Sign-Up Successful.",
+      description: `Your account is ready. Please log in to continue.`,
+      classes: "border-green-500 border-2",
+      duration: 3000,
+      direction: "top"
+    });
+  }).catch((error) => {
+    // Handle Errors here.
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    toast({
+      title: `Error ${error.code}`,
+      description: error.message,
+      classes: "border-red-500 border-2",
+      duration: 3000,
+      direction: "top"
+    });
+  });
+  }
   return (
-    <div className="w-full h-screen flex justify-center p-2 mt-4">
-      <div className="w-2/5 flex flex-col justify-center items-center shadow-gray-600 shadow-xl rounded-2xl p-6 border border-gray-400">
-        <div className="flex flex-col gap-y-1 justify-center items-center ">
+    <div className="w-full h-auto flex justify-center p-2 mt-4">
+      <div className="w-2/5 flex flex-col justify-center items-center shadow-gray-600 shadow-xl rounded-2xl p-6 border border-gray-400 h-auto">
+        <div className="flex flex-col gap-y-1 justify-center items-center">
           <h1 className="text-4xl font-pbold">
             Sign Up
           </h1>
           <h6 className="text-md font-pregular mb-3 text-gray-400">
             Create an account to get started
           </h6>
+        </div>
+        <div className="flex flex-row gap-2">
+        <Icon onClick={() => googleProviderSignIn()} icon="devicon:google" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
+        <Icon onClick={() => document.getElementById("signup-submit")?.click()} icon="dashicons:email-alt" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full px-5">
@@ -155,7 +194,7 @@ const Signup = () => {
                 </FormItem>
               )}
             />
-            <Button className="flex w-[75%] justify-self-center font-pmedium" type="submit">Submit<Icon className="text-violet-500 scale-150" icon="majesticons:login-half-circle" width="60px" height="60px" /></Button>
+            <Button id="signup-submit" className="flex w-[75%] justify-self-center font-pmedium" type="submit">Submit<Icon className="text-violet-500 scale-150" icon="majesticons:login-half-circle" width="60px" height="60px" /></Button>
           </form>
         </Form>
         <div className="flex flex-col gap-y-1 justify-center items-center ">
