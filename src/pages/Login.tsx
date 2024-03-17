@@ -12,10 +12,17 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "@iconify/react/dist/iconify.js"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "@/firebase"
+import { useContext } from "react"
+import { UserContext } from "@/main"
+import { toast } from "@/hooks/use-toast"
 
 const Login = () => {
+  const {setUser} = useContext(UserContext);
+  const navigate = useNavigate();
   const formSchema = z.object({
     email: z.string().email({
       message: "Please enter correct Email.",
@@ -30,6 +37,7 @@ const Login = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
+      password: "",
     },
   })
 
@@ -37,10 +45,32 @@ const Login = () => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values)
+    signInWithEmailAndPassword(auth,values.email,values.password)
+    .then((userCredential) => {
+      //Signin in
+      const user = userCredential.user;
+      setUser(user);
+      toast({
+        title: "Login Successful.",
+        description: `Logged in as ${values.email}`,
+        classes:"border-green-500 border-2",
+        duration:3000,
+        direction:"top"
+      });
+      navigate("/home");
+      // ...
+    }).catch((error) => {
+      toast({
+        title: `Login Failed - Error ${error.code}`,
+        description: `${error.message}`,
+        classes:"border-red-500 border-2",
+        duration:3000,
+        direction:"top"
+      });
+    })
   }
   return (
-    <div className="w-full h-screen flex justify-center p-2 border">
+    <div className="w-full h-screen flex justify-center p-2 mt-4">
       <div className="w-2/5 flex flex-col justify-center items-center shadow-gray-600 shadow-xl rounded-2xl p-6 border border-gray-400">
         <div className="flex flex-col gap-y-1 justify-center items-center ">
           <h1 className="text-4xl font-pbold">
