@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input"
 import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "@iconify/react"
 // import { auth } from "@/firebase"
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth"
+import { createUserWithEmailAndPassword, FacebookAuthProvider, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth"
 import { useToast } from "@/hooks/use-toast"
 import { useContext } from "react"
 import { UserContext } from "@/main"
@@ -132,6 +132,43 @@ const Signup = () => {
     });
   });
   }
+  function facebookProviderSignIn(): void {
+    signInWithPopup(auth, provider)
+  .then((result) => {
+    // The signed-in user info.
+    const user = result.user;
+    setUser(user);
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    const credential = FacebookAuthProvider.credentialFromResult(result);
+    const accessToken = credential?.accessToken;
+    toast({
+      title: "Sign-Up Successful.",
+      description: `Your account is ready. Please log in to continue.`,
+      classes: "border-green-500 border-2",
+      duration: 3000,
+      direction: "top"
+    });
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    // const errorCode = error.code;
+    // const errorMessage = error.message;
+    // The email of the user's account used.
+    // const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = FacebookAuthProvider.credentialFromError(error);
+    toast({
+      title: `Error ${error.code}`,
+      description: error.message,
+      classes: "border-red-500 border-2",
+      duration: 3000,
+      direction: "top"
+    });
+  });
+  }
+
   return (
     <div className="w-full h-auto flex justify-center p-2 mt-4">
       <div className="w-2/5 flex flex-col justify-center items-center shadow-gray-600 shadow-xl rounded-2xl p-6 border border-gray-400 h-auto">
@@ -146,6 +183,7 @@ const Signup = () => {
         <div className="flex flex-row gap-2">
         <Icon onClick={() => googleProviderSignIn()} icon="devicon:google" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
         <Icon onClick={() => document.getElementById("signup-submit")?.click()} icon="dashicons:email-alt" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
+        <Icon onClick={() => facebookProviderSignIn()} icon="logos:facebook" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full px-5">
