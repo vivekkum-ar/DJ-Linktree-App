@@ -195,7 +195,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
     <div className={`flex flex-col justify-center items-center ${className} z-30`}>
-      <div className="flex flex-row w-full pe-6 py-2 top-0 fixed justify-between">
+      <div className="flex flex-row w-full pe-6 py-2 top-0 fixed justify-between dark:bg-zinc-950 bg-inherit">
 
         <div className={`font-mbold flex justify-center text-3xl flex-row w-[5%] ms-6 h-12 items-center`}>
           <h1 className='absolute shadow-xl text-2xl text-violet-700 font-mextrabold'>Dj</h1>
@@ -205,7 +205,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           <div className={`hidden md:flex absolute font-mbold text-xl w-full flex-row h-14 bg-gradient-to-r from-purple-500 to-purple-900 rounded-2xl items-center px-4`}>
 
           </div>
-          <div className={`hidden md:flex bg-white absolute text-xl w-[99%] flex-row h-12 border-2 border-slate-300 rounded-xl items-center justify-center px-6`}>
+          <div className={`hidden md:flex dark:bg-zinc-950 bg-white absolute text-xl w-[99%] flex-row h-12 border-2 border-slate-300 dark:border-slate-800 rounded-xl items-center justify-center px-6`}>
             <NavigationMenu1></NavigationMenu1>
           </div>
           <DropdownMain></DropdownMain>

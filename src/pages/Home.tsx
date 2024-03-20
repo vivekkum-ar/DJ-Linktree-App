@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { IonButton, IonAlert } from '@ionic/react';
+// import { IonButton, IonAlert } from '@ionic/react';
 import React, { useState } from 'react'
 import { IDetectedBarcode, outline, Scanner } from '@yudiel/react-qr-scanner';
 interface HomeProps {
