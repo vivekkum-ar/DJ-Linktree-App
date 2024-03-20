@@ -12,6 +12,9 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Link } from 'react-router-dom';
 import { DarkModeToggle } from './mode-toggle';
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem, DropdownMenuGroup, DropdownMenuPortal, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger } from '@radix-ui/react-dropdown-menu';
+import { Button } from './ui/button';
+import DropdownMain, { DropdownMenuShortcut } from './ui/dropdown-menu';
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -198,13 +201,14 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           <h1 className='absolute shadow-xl text-2xl text-violet-700 font-mextrabold'>Dj</h1>
           <Icon className=' text-violet-400 opacity-40' icon="jam:qr-code" width="55px" height="55px" />
         </div>
-        <div className="flex flex-row relative w-[55%] justify-center items-center">
-          <div className={`absolute font-mbold text-xl w-full flex flex-row h-14 bg-gradient-to-r from-purple-500 to-purple-900 rounded-2xl items-center px-4`}>
+        <div className="flex flex-row relative w-[60%] justify-end sm:justify-center items-center">
+          <div className={`hidden md:flex absolute font-mbold text-xl w-full flex-row h-14 bg-gradient-to-r from-purple-500 to-purple-900 rounded-2xl items-center px-4`}>
 
           </div>
-          <div className={`bg-white absolute text-xl w-[98.5%] flex flex-row h-12 border-2 border-slate-300 rounded-xl items-center justify-center px-6`}>
+          <div className={`hidden md:flex bg-white absolute text-xl w-[99%] flex-row h-12 border-2 border-slate-300 rounded-xl items-center justify-center px-6`}>
             <NavigationMenu1></NavigationMenu1>
           </div>
+          <DropdownMain></DropdownMain>
         </div>
       </div>
     </div>
