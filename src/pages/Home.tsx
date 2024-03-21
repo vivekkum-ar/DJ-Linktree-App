@@ -8,6 +8,14 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Jumbotron from '@/components/Jumbotron';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import socialSharingSvg from "@/assets/social-sharing.svg"
+// import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import Lottie, { useLottie } from "lottie-react";
+import webIcons from "@/assets/lottie/VUaU1Z4EFW.json"
+import { Icon } from '@iconify/react/dist/iconify.js';
+import AnimatedCard from '@/components/AnimatedCard';
+// import { WebConnect } from '@/assets/lottie/VUaU1Z4EFW.lottie';
+
 interface HomeProps {
   // Add your prop types here
   // theme: string;
@@ -19,7 +27,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Home: React.FC<HomeProps> = ({ }) => {
   const container = useRef<HTMLDivElement>(null);
-
   useGSAP(
     () => {
       // gsap code here...
@@ -70,19 +77,39 @@ const Home: React.FC<HomeProps> = ({ }) => {
     <div className='w-full h-screen flex flex-col items-center'>
       <Jumbotron />
       <div className="w-full px-4 md:px-16 py-2 md:py-8 dark:bg-zinc-950 relative">
-        <div className="outline-1 outline outline-red-500 relative h-[30rem] box-container">
-          <div className="font-pbold text-white bg-red-200 rounded-xl glass absolute top-0 left-0 w-[70rem] h-[30rem]" ref={container}>
-            {/* First content */}0
-          </div>
-          <div className="font-pbold text-white bg-red-200 rounded-xl glass boxa absolute top-0 left-0 w-[70rem] h-[30rem]" ref={container}>
-            {/* First content */}1
-          </div>
-          <div className="font-pbold text-white bg-red-200 rounded-xl glass boxa absolute top-0 left-0 w-[70rem] h-[30rem]" ref={container}>
-            {/* First content */}2
-          </div>
-          <div className="font-pbold text-white bg-blue-200 rounded-xl glass boxa absolute top-0 left-0 w-[70rem] h-[30rem]">
-            {/* Second content */}3
-          </div>
+        <div className="outline-1 outline outline-red-500 relative h-[30rem] box-container"  ref={container}>
+          <AnimatedCard id={0} title='Customizable QR Codes' description='Unify your digital presence with a single, scannable QR code.'
+            features={[
+              {
+                title: "Personalized Designs",
+                description: "Match colors and patterns to your brand.",
+              },
+              {
+                title: "Add Logos",
+                description: "Include your logo for a professional touch.",
+              },
+              {
+                title: "Scalable",
+                description: "Resize for any platform or material.",
+              },
+              {
+                title: "Dynamic Links",
+                description: "Update content without changing the code.",
+              },
+              {
+                title: "Attractive",
+                description: "Create QR codes that stand out.",
+              },
+              {
+                title: "Reliable Scanning",
+                description: "Ensure codes work seamlessly everywhere.",
+              },
+            ]} lottieSource={webIcons}>
+
+            </AnimatedCard>
+          <AnimatedCard id={1} title='import React from' description='' features={[]} lottieSource={webIcons}></AnimatedCard>
+          <AnimatedCard id={2} title='Centralized Link Management' description='' features={[]} lottieSource={webIcons}></AnimatedCard>
+          <AnimatedCard id={3} title='Seamless Sharing' description='' features={[]} lottieSource={webIcons}></AnimatedCard>
         </div>
       </div>
 
@@ -106,16 +133,6 @@ const Home: React.FC<HomeProps> = ({ }) => {
           //  children={<Button variant={"destructive"} className='absolute top-0 ' onClick={() => setPause(!pause)}>Lorem ipsum dolor sit amet.</Button>}
           scanDelay={1000} onScan={(result) => console.log(result[0].rawValue)} />
       </div>
-      {/* <IonButton id="present-alert">Click Me</IonButton>
-      <IonAlert
-        isOpen={isOpen}
-        trigger="present-alert"
-        header="A Short Title Is Best"
-        subHeader="A Sub Header Is Optional"
-        message="A message should be a short, complete sentence."
-        buttons={['Ok']}
-        onDidDismiss={() => setIsOpen(false)}
-      ></IonAlert> */}
       <Button variant="default" onClick={() => console.log("Primary")}>
         Primary
       </Button>
