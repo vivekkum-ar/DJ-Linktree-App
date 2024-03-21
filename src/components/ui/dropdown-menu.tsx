@@ -201,7 +201,7 @@ export {
 
 const DropdownMain = () => {
   return (
-    <div className='md:hidden relative z-30 bg-white font-pregular'>
+    <div className='md:hidden relative z-30 dark:bg-inherit bg-white font-pregular'>
           <DropdownMenu >
       <DropdownMenuTrigger asChild>
       <Icon icon="solar:hamburger-menu-linear" className='text-violet-500 bg-transparent rounded-full border-2 p-2' width="40px" height="40px"  style={{}} />
@@ -211,12 +211,12 @@ const DropdownMain = () => {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger className="bg-blue-500">Getting Started</DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger >Getting Started</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>DJQR</DropdownMenuItem>
+                {/* <DropdownMenuItem>DJQR</DropdownMenuItem> */}
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Introduction</DropdownMenuItem>
+                <DropdownMenuItem>About us</DropdownMenuItem>
                 <DropdownMenuItem>Adding Links</DropdownMenuItem>
                 <DropdownMenuItem>Services</DropdownMenuItem>
               </DropdownMenuSubContent>

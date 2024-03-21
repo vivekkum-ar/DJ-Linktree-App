@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useTheme } from "@/components/theme-provider"
+import { Icon } from "@iconify/react/dist/iconify.js"
 
 export function DarkModeToggle() {
   const { setTheme } = useTheme()
@@ -23,12 +24,15 @@ export function DarkModeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>
+          <Icon icon="solar:sun-outline" width={65} height={65} className=""></Icon>
           Light
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
+          <Icon icon="solar:moon-sleep-outline" width={55} height={55} className=""></Icon>
           Dark
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
+          <Icon icon="line-md:light-dark" width={55} height={55} className=""></Icon>
           System
         </DropdownMenuItem>
       </DropdownMenuContent>

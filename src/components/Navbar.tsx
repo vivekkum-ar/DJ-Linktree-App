@@ -12,9 +12,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Link } from 'react-router-dom';
 import { DarkModeToggle } from './mode-toggle';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem, DropdownMenuGroup, DropdownMenuPortal, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger } from '@radix-ui/react-dropdown-menu';
-import { Button } from './ui/button';
-import DropdownMain, { DropdownMenuShortcut } from './ui/dropdown-menu';
+import DropdownMain from './ui/dropdown-menu';
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -35,23 +33,6 @@ const components: { title: string; href: string; description: string }[] = [
     description:
       "Information on how we handle, store, and utilize the data you provide.",
   },
-  // {
-  //   title: "Scroll-area",
-  //   href: "/docs/primitives/scroll-area",
-  //   description: "Visually or semantically separates content.",
-  // },
-  // {
-  //   title: "Tabs",
-  //   href: "/docs/primitives/tabs",
-  //   description:
-  //     "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  // },
-  // {
-  //   title: "Tooltip",
-  //   href: "/docs/primitives/tooltip",
-  //   description:
-  //     "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  // },
 ]
 
 export function NavigationMenu1() {
@@ -81,7 +62,7 @@ export function NavigationMenu1() {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/getting-started" title="Introduction">
+              <ListItem href="/getting-started" title="About Us">
                 How to get started with this QR app?
               </ListItem>
               <ListItem href="/adding-your-handles" title="Adding Links">
@@ -193,25 +174,26 @@ interface NavbarProps {
 /* ---------------------------------------------------------------------------------------------- */
 
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
+  console.log(className);
   return (
-    <div className={`flex flex-col justify-center items-center ${className} z-30`}>
-      <div className="flex flex-row w-full pe-6 py-2 top-0 fixed justify-between dark:bg-zinc-950 bg-inherit">
-
+    // <div className={`flex flex-col justify-center items-center ${className} z-30 outline outline-red-500 h-4`}>
+      <div className="pe-6 py-2 top-0 fixed z-30 bg-inherit w-full">
+        <div className="flex flex-row w-full justify-between max-w-screen-xl mx-auto">
         <div className={`font-mbold flex justify-center text-3xl flex-row w-[5%] ms-6 h-12 items-center`}>
           <h1 className='absolute shadow-xl text-2xl text-violet-700 font-mextrabold'>Dj</h1>
           <Icon className=' text-violet-400 opacity-40' icon="jam:qr-code" width="55px" height="55px" />
         </div>
-        <div className="flex flex-row relative w-[60%] justify-end sm:justify-center items-center">
-          <div className={`hidden md:flex absolute font-mbold text-xl w-full flex-row h-14 bg-gradient-to-r from-purple-500 to-purple-900 rounded-2xl items-center px-4`}>
+        <div className="md:glass flex flex-row relative w-[60%] justify-end sm:justify-center items-center shadow-xl">
+          <div className={`hidden md:flex absolute font-mbold text-xl w-full flex-row h-14 bg-gradient-to-r glass from-purple-500 to-purple-900 rounded-2xl items-center px-4`}>
 
           </div>
-          <div className={`hidden md:flex dark:bg-zinc-950 bg-white absolute text-xl w-[99%] flex-row h-12 border-2 border-slate-300 dark:border-slate-800 rounded-xl items-center justify-center px-6`}>
+          <div className={`hidden md:flex dark:bg-zinc-950 absolute text-xl w-[99%] flex-row h-12 border-2 border-slate-300 dark:border-slate-800 rounded-xl items-center justify-center px-6`}>
             <NavigationMenu1></NavigationMenu1>
           </div>
           <DropdownMain></DropdownMain>
         </div>
       </div>
-    </div>
+     </div>
   )
 }
 
