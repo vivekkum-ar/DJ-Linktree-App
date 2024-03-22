@@ -13,11 +13,12 @@ interface AnimatedCardProps {
     features: Feature[]
     lottieSource: unknown
     id: number
+    rotateLottieByDegree?:number
 }
 
 const colors = ["glass-blue","glass-teal","glass-violet","glass-lblue"];
 
-const AnimatedCard: React.FC<AnimatedCardProps> = ({ title, description, features, lottieSource, id}) => {
+const AnimatedCard: React.FC<AnimatedCardProps> = ({ title, description, features, lottieSource, id, rotateLottieByDegree}) => {
     return (
         <div className={`font-pbold text-white bg-red-200 rounded-xl glass glass-blue absolute top-0 left-0 w-[70rem] h-[30rem] ${id == 0 ? `${colors[id]}` : `${colors[id]} boxa`}`}>
             <div className="flex flex-row h-full w-full">
@@ -39,7 +40,7 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ title, description, feature
                         </ul>
                     </div>
                 </div>
-                <div className="flex basis-1/2 rotate-12">
+                <div className={`flex basis-1/2 rotate-${rotateLottieByDegree && rotateLottieByDegree > 0 ? rotateLottieByDegree : "12"}`}>
                     <Lottie animationData={lottieSource} autoPlay loop={true} />
                 </div>
             </div>

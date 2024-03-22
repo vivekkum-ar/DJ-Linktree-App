@@ -11,6 +11,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import socialSharingSvg from "@/assets/social-sharing.svg"
 // import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import webIcons from "@/assets/lottie/VUaU1Z4EFW.json"
+import testAnimation from "@/assets/lottie/Animation - 1736418970643.json"
+import sharingHeart from "@/assets/lottie/Animation - 1736419815712.json"
+import managementAnim from "@/assets/lottie/Animation - 1736419664466.json"
 import AnimatedCard from '@/components/AnimatedCard';
 // import { WebConnect } from '@/assets/lottie/VUaU1Z4EFW.lottie';
 
@@ -127,7 +130,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
                 description: "Ensures reliable performance across diverse regions.",
               },
             ]
-          } lottieSource={webIcons}></AnimatedCard>
+          } lottieSource={testAnimation} rotateLottieByDegree={360}></AnimatedCard>
           <AnimatedCard id={2} title='Centralized Link Management' description=''
             features={
               [
@@ -152,7 +155,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
                   description: "Create branded short links for better recognition.",
                 },
               ]
-            } lottieSource={webIcons}>
+            } lottieSource={managementAnim}>
           </AnimatedCard>
           <AnimatedCard id={3} title='Seamless Sharing' description='' features={
             [
@@ -177,7 +180,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
                 description: "Tailor sharing settings to match your audience.",
               },
             ]
-          } lottieSource={webIcons}></AnimatedCard>
+          } lottieSource={sharingHeart}></AnimatedCard>
         </div>
       </div>
 
