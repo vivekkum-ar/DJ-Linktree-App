@@ -16,7 +16,7 @@ const Jumbotron: React.FC<JumbotronProps> = ({}) => {
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m1 9 4-4-4-4" />
             </svg>
           </a>
-          <h1 className="mb-4 text-3xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">We Simplify <p className='font-mbold inline-flex text-violet-500'>Connections</p><br /> <p className='mt-4 font-mbold inline-flex text-violet-500'>Amplify</p> Your Reach<Icon icon="carbon:growth" className='inline-flex scale-75 md:scale-100 text-violet-600' width="60px" height="60px"/></h1>
+          <h1 className="mb-4 text-3xl font-semibold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">We Simplify <p className='font-mbold inline-flex text-violet-500'>Connections</p><br /> <p className='mt-4 font-mbold inline-flex text-violet-500'>Amplify</p> Your Reach<Icon icon="carbon:growth" className='inline-flex scale-75 md:scale-100 text-violet-600' width="60px" height="60px"/></h1>
           <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200 text-justify">Empowering individuals and businesses to share customizable QR codes for seamless access to their online profiles. Simplify your digital presence and amplify your reach effortlessly.</p>
           <form className="w-full max-w-md mx-auto">   
             <label htmlFor="default-email" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Email sign-up</label>
