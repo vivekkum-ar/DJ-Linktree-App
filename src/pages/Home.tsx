@@ -30,63 +30,176 @@ gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 const Home: React.FC<HomeProps> = ({ }) => {
-  const socialMedia = () => {
-    
-  }
+
   const [count, setCount] = useState<number>(0);
-  const medias: any[] = [
-    <p className={`${"animate__fadeInDown"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-violet-700 to-fuchsia-700 bg-clip-text text-transparent`}>Instagram </p>,
-    <p className={`${"animate__fadeInDown"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-blue-700 to-teal-900 bg-clip-text text-transparent`}>Facebook </p>,
-    <p className={`${"animate__fadeInDown"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-gray-700 via-gray-200 to-gray-500 bg-clip-text text-transparent`}>Twitter </p>,
-  ]
+
   useEffect(() => {
     window.setTimeout(() => {
       setCount(prev => prev >= 2 ? 0 : prev+1);
     }, 1500);
   },[count])
-  useEffect(() => {
-    anime({
-      targets: '.card1',
-      translateX: function(el:any,i:number) {
-        return 100 + (400 * i);
-      },
-      translateY: function(el:any, i:any) {
-        return 250 + (0 * i);
-      },
-      scale: function(el:any, i:any, l:any) {
-        return (l-3) + .5;
-      },
-      rotate: function() { return anime.random(340, 360); },
-      borderRadius: function() { return ['20%', anime.random(10, 15) + '%']; },
-      duration: function() { return anime.random(2500, 3000); },
-      delay: function() { return anime.random(0, 400); },
-      direction: 'normal',
-      loop: false
+
+  useGSAP(() => {
+    var tl = anime.timeline({
+      easing: 'easeOutExpo',
+      duration: 750,
+      autoplay:false
     });
-  }, [])
-  const container = useRef<HTMLDivElement>(null);
-  useGSAP(
-    () => {
-      // gsap code here...
-      gsap.from(".boxa", {
-        scrollTrigger: {
-          trigger: ".box-container",
-          start: "top top+=10%",  // [trigger] [scroller] positions
-          end: "bottom+=200% 80%", // [trigger] [scroller] positions
-          // or relative amount: "+=500"
-          scrub: true, // or time (in seconds) to catch up
-          pin: true, // or selector or element to pin
-          markers: true, // only during development!
-        },
-        x: "110%",
-        stagger: {
-          amount: 1,
-          from: "start"
-        },
-      }); // <-- automatically reverted
-    },
-    // { scope: container }
-  ); // <-- scope is for selector text (optional)
+    tl.add({
+      targets: ".demo",
+      // translateX: 200,
+      // translateY: 200,
+      duration: function() { return anime.random(2500, 3000); },
+      rotate: 120,
+      borderRadius: function() { return ['20%', anime.random(10, 15) + '%']; },
+      delay: anime.stagger(100),
+      direction: 'normal',
+      width: "40rem",
+      height: "40rem"
+    })
+    tl.add({
+      targets: ".img1",
+      // translateX: 200,
+      // translateY: 200,
+      // duration: function() { return anime.random(2500, 3000); },
+      // rotate:function() { return anime.random(3000, 3000); },
+      borderRadius: 20,
+      direction: 'normal',
+      delay: anime.stagger(100),
+      // width: "40rem",
+      // height: "40rem"
+    },"0")
+    tl.add({
+      targets: ".demo2",
+      // translateX: 200,
+      // translateY: 200,
+      duration: function() { return anime.random(2500, 3000); },
+      rotate:120-45,
+      direction: 'normal',
+      width: "40rem",
+      height: "40rem"
+    },0)
+    // nonchalantly
+    tl.add({
+      targets:[".img5",".img6",".img7",".img8"],
+      duration: 2000,
+      width: "+=15rem",
+      height: "+=5rem",
+      rotate: -75,
+    },1500)
+    tl.add({
+      targets:[".img5"],
+      duration: 1000,
+      scale:"0.75",
+      translateX:"-=500",
+      translateY:"-15",
+      borderRadius:"20",
+    },3500)
+    tl.add({
+      targets:[".img6"],
+      duration: 1000,
+      scale:"0.75",
+      translateX:"-=880",
+      translateY:"90",
+      borderRadius:"20",
+    },3500)
+    tl.add({
+      targets:[".img7"],
+      duration: 1000,
+      scale:"0.75",
+      translateX:"-=300",
+      translateY:"250",
+      borderRadius:"20",
+    },3500)
+    tl.add({
+      targets:[".img8"],
+      duration: 1000,
+      scale:"0.75",
+      translateX:"-=200",
+      translateY:"35",
+      borderRadius:"20",
+    },3500)
+    tl.add({
+      targets:[".img1",".img2",".img3",".img4"],
+      duration: 2000,
+      width: "+=15rem",
+      height: "+=5rem",
+      rotate: 240
+    },1500)
+    tl.add({
+      targets:[".img1"],
+      duration: 1000,
+      scale:"0.75",
+      translateX:"30",
+      translateY:"-5",
+      borderRadius:"20",
+      // rotate:120
+    },3500)
+    tl.add({
+      targets:[".img2"],
+      duration: 1000,
+      scale:"0.75",
+      translateX:"405",
+      translateY:"-425",
+      borderRadius:"20"
+    },3500)
+    tl.add({
+      targets:[".img3"],
+      duration: 1000,
+      scale:"0.75",
+      translateX:"935",
+      translateY:"205",
+      borderRadius:"20"
+    },3500)
+    tl.add({
+      targets:[".img4"],
+      duration: 1000,
+      scale:"0.75",
+      translateX:"825",
+      translateY:"105",
+      borderRadius:"20"
+    },3500)
+
+    // gsap.from(".boxa", {
+    //   scrollTrigger: {
+    //     trigger: ".box-container",
+    //     start: "top top+=10%",  // [trigger] [scroller] positions
+    //     end: "bottom+=200% 80%", // [trigger] [scroller] positions
+    //     // or relative amount: "+=500"
+    //     scrub: true, // or time (in seconds) to catch up
+    //     pin: true, // or selector or element to pin
+    //     // markers: true, // only during development!
+    //   },
+    //   x: "110%",
+    //   stagger: {
+    //     amount: 1,
+    //     from: "start"
+    //   },
+    // }); // <-- automatically reverted
+    gsap.from(".boxb", {
+      scrollTrigger: {
+        trigger: ".boxb",
+        start: "top center+=10%",  // [trigger] [scroller] positions
+        end: "bottom+=200% 80%", // [trigger] [scroller] positions
+        // or relative amount: "+=500"
+        scrub: true, // or time (in seconds) to catch up
+        // pin: true, // or selector or element to pin
+
+        markers: true, // only during development!
+        onUpdate:(scroll:any) => {
+          console.log("progress: ",scroll.progress,"tl.progress: ",(scroll.progress * 100));
+          tl.seek(tl.duration * scroll.progress);
+        }
+      },
+      // x: "110%",
+      // stagger: {
+      //   amount: 1,
+      //   from: "start"
+      // },
+    }); // <-- automatically reverted
+  },
+  // { scope: container }
+) // <-- scope is for selector text (optional)
 
   const customTracker = (detectedCodes: IDetectedBarcode[], ctx: CanvasRenderingContext2D): void => {
     // Clear the canvas
@@ -219,47 +332,34 @@ const Home: React.FC<HomeProps> = ({ }) => {
             ]
           } lottieSource={sharingHeart}></AnimatedCard>
         </div>
-      </div> */}
-
-      {/* <div className="w-80 p-0 m-0 -z-10">
-        <Scanner styles={{
-          container: {
-            width: '100%',
-            height: '100%',
-            position: 'relative',
-            // padding:"30px"
-          },
-          video: {
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            display: 'block',
-            overflow: 'hidden'
-          },
-        }} allowMultiple={true} paused={pause} components={{ finder: true, onOff: true, torch: true, tracker: customTracker, zoom: true, }}
-          //  children={<Button variant={"destructive"} className='absolute top-0 ' onClick={() => setPause(!pause)}>Lorem ipsum dolor sit amet.</Button>}
-          scanDelay={1000} onScan={(result) => console.log(result[0].rawValue)} />
-      </div> */}
-      <div className="font-pregular text-center w-screen pt-12 pb-4">
+      </div>  */}
+ <div className="font-pregular text-center w-screen pt-12 pb-4">
         <h1 className="mb-4 text-3xl font-semibold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Add your links to your&nbsp; 
           <div className='inline-flex min-w-[5em]'>
-        <p className={`${count == 0 ? " animate__faster animate__fadeInDown" : " animate__faster animate__fadeOutDown hidden"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-violet-700 to-fuchsia-700 bg-clip-text text-transparent`}>Instagram </p>
-    <p className={`${count == 1 ? " animate__faster animate__fadeInDown" : " animate__faster animate__fadeOutDown hidden"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-blue-700 to-teal-900 bg-clip-text text-transparent`}>Facebook </p>
-    <p className={`${count == 2 ? " animate__faster animate__fadeInDown" : " animate__faster animate__fadeOutDown hidden"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-gray-700 via-gray-200 to-gray-500 bg-clip-text text-transparent`}>Twitter </p>
+        <p className={`${count == 0 ? " animate__fast animate__fadeInDown" : " animate__fast animate__fadeOutDown hidden"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-violet-700 to-fuchsia-700 bg-clip-text text-transparent`}>Instagram </p>
+    <p className={`${count == 1 ? " animate__fast animate__fadeInDown" : " animate__fast animate__fadeOutDown hidden"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-blue-700 to-teal-900 bg-clip-text text-transparent`}>Facebook </p>
+    <p className={`${count == 2 ? " animate__fast animate__fadeInDown" : " animate__fast animate__fadeOutDown hidden"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-gray-700 via-gray-200 to-gray-500 bg-clip-text text-transparent`}>Twitter </p>
           </div>
           <br/> and other bio sections
           </h1>
       </div>
-      <div className="flex-row w-screen relative outline outline-red-400 px-12">
-        <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className="rounded-full w-40 h-32 outline absolute function-based-values-demo"></div>
-        <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className="rounded-full w-40 h-32 outline absolute function-based-values-demo"></div>
-        <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className="rounded-full w-40 h-32 outline absolute function-based-values-demo"></div>
-        <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className="rounded-full w-40 h-32 outline absolute top-5 left-5 function-based-values-demo"></div>
-        <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className="rounded-full w-40 h-32 outline absolute top-10 function-based-values-demo"></div>
+ <div className="relative w-full px-12 flex justify-center h-auto boxb">
+
+        <div className="grid grid-rows-3 grid-cols-3 w-40 h-auto demo grid-flow-col gap-12" >
+  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-2 img1'>111111</div>
+  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-1 img2'>222222</div>
+  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-3 img3'>333333</div>
+  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-2 img4'>444444</div>
+</div>
+        <div className="grid grid-rows-3 grid-cols-3 w-40 h-auto demo2 grid-flow-col gap-12 rotate-45 top-0 absolute">
+  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-2 img5'>555555</div>
+  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-1 img6'>666666</div>
+  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-3 img7'>777777</div>
+  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-2 img8'>888888</div>
+</div>
+ </div>
       </div>
 
-    </div>
   )
 }
 export default Home
