@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 // import { IonButton, IonAlert } from '@ionic/react';
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { IDetectedBarcode, outline, Scanner } from '@yudiel/react-qr-scanner';
 // import { AspectRatio } from '@radix-ui/react-aspect-ratio';
 import { useRef } from 'react';
@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import 'animate.css';
 // import socialSharingSvg from "@/assets/social-sharing.svg"
 // import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import anime from 'animejs/lib/anime.es.js';
 import webIcons from "@/assets/lottie/VUaU1Z4EFW.json"
 import testAnimation from "@/assets/lottie/Animation - 1736418970643.json"
 import sharingHeart from "@/assets/lottie/Animation - 1736419815712.json"
@@ -34,14 +35,35 @@ const Home: React.FC<HomeProps> = ({ }) => {
   }
   const [count, setCount] = useState<number>(0);
   const medias: any[] = [
-    <p className={`${count == 0 ? "animate__animated animate__fadeInDown" : "animate__animated animate__fadeInDown"} font-mbold inline-flex pb-3 bg-gradient-to-br from-violet-700 to-fuchsia-700 bg-clip-text text-transparent`}>Instagram </p>,
-    <p className={`${count == 1 ? "animate__animated animate__fadeInDown" : "animate__animated animate__fadeInDown"} font-mbold inline-flex pb-3 bg-gradient-to-br from-blue-700 to-teal-900 bg-clip-text text-transparent`}>Facebook </p>,
-    <p className={`${count == 2 ? "animate__animated animate__fadeInDown" : "animate__animated animate__fadeInDown"} font-mbold inline-flex pb-3 bg-gradient-to-br from-gray-700 via-gray-200 to-gray-500 bg-clip-text text-transparent`}>Twitter </p>,
+    <p className={`${"animate__fadeInDown"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-violet-700 to-fuchsia-700 bg-clip-text text-transparent`}>Instagram </p>,
+    <p className={`${"animate__fadeInDown"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-blue-700 to-teal-900 bg-clip-text text-transparent`}>Facebook </p>,
+    <p className={`${"animate__fadeInDown"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-gray-700 via-gray-200 to-gray-500 bg-clip-text text-transparent`}>Twitter </p>,
   ]
-  window.setTimeout(() => {
-    setCount(prev => prev >= 2 ? 0 : prev+1);
-  }, 1500);
-
+  useEffect(() => {
+    window.setTimeout(() => {
+      setCount(prev => prev >= 2 ? 0 : prev+1);
+    }, 1500);
+  },[count])
+  useEffect(() => {
+    anime({
+      targets: '.card1',
+      translateX: function(el:any,i:number) {
+        return 100 + (400 * i);
+      },
+      translateY: function(el:any, i:any) {
+        return 250 + (0 * i);
+      },
+      scale: function(el:any, i:any, l:any) {
+        return (l-3) + .5;
+      },
+      rotate: function() { return anime.random(340, 360); },
+      borderRadius: function() { return ['20%', anime.random(10, 15) + '%']; },
+      duration: function() { return anime.random(2500, 3000); },
+      delay: function() { return anime.random(0, 400); },
+      direction: 'normal',
+      loop: false
+    });
+  }, [])
   const container = useRef<HTMLDivElement>(null);
   useGSAP(
     () => {
@@ -229,7 +251,13 @@ const Home: React.FC<HomeProps> = ({ }) => {
           <br/> and other bio sections
           </h1>
       </div>
-
+      <div className="flex-row w-screen relative outline outline-red-400 px-12">
+        <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className="rounded-full w-40 h-32 outline absolute function-based-values-demo"></div>
+        <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className="rounded-full w-40 h-32 outline absolute function-based-values-demo"></div>
+        <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className="rounded-full w-40 h-32 outline absolute function-based-values-demo"></div>
+        <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className="rounded-full w-40 h-32 outline absolute top-5 left-5 function-based-values-demo"></div>
+        <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className="rounded-full w-40 h-32 outline absolute top-10 function-based-values-demo"></div>
+      </div>
 
     </div>
   )
