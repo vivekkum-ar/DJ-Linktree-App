@@ -18,6 +18,7 @@ import sharingHeart from "@/assets/lottie/Animation - 1736419815712.json"
 import managementAnim from "@/assets/lottie/Animation - 1736419664466.json"
 import AnimatedCard from '@/components/AnimatedCard';
 import { setTimeout } from 'timers/promises';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 // import { WebConnect } from '@/assets/lottie/VUaU1Z4EFW.lottie';
 
 interface HomeProps {
@@ -40,149 +41,66 @@ const Home: React.FC<HomeProps> = ({ }) => {
   },[count])
 
   useGSAP(() => {
+    // var tl = anime.timeline({
+    //   easing: 'easeOutExpo',
+    //   duration: 750,
+    //   autoplay:false
+    // });
     var tl = anime.timeline({
       easing: 'easeOutExpo',
       duration: 750,
       autoplay:false
     });
     tl.add({
-      targets: ".demo",
-      // translateX: 200,
-      // translateY: 200,
-      duration: function() { return anime.random(2500, 3000); },
-      rotate: 120,
-      borderRadius: function() { return ['20%', anime.random(10, 15) + '%']; },
-      delay: anime.stagger(100),
-      direction: 'normal',
-      width: "40rem",
-      height: "40rem"
+      targets:".img8",
+      translateX:430,
+      translateY:-250
+    },0)
+    tl.add({
+      targets:".img7",
+      translateX:430,
+      translateY:30
     })
     tl.add({
-      targets: ".img1",
-      // translateX: 200,
-      // translateY: 200,
-      // duration: function() { return anime.random(2500, 3000); },
-      // rotate:function() { return anime.random(3000, 3000); },
-      borderRadius: 20,
-      direction: 'normal',
-      delay: anime.stagger(100),
-      // width: "40rem",
-      // height: "40rem"
-    },"0")
+      targets:".img6",
+      translateX:430,
+      translateY:310
+    })
     tl.add({
-      targets: ".demo2",
-      // translateX: 200,
-      // translateY: 200,
-      duration: function() { return anime.random(2500, 3000); },
-      rotate:120-45,
-      direction: 'normal',
-      width: "40rem",
-      height: "40rem"
-    },0)
-    // nonchalantly
+      targets:".img5",
+      translateX:5,
+      translateY:310
+    })
     tl.add({
-      targets:[".img5",".img6",".img7",".img8"],
-      duration: 2000,
-      width: "+=15rem",
-      height: "+=5rem",
-      rotate: -75,
-    },1500)
+      targets:".img4",
+      translateX:-420,
+      translateY:310
+    })
     tl.add({
-      targets:[".img5"],
-      duration: 1000,
-      scale:"0.75",
-      translateX:"-=500",
-      translateY:"-15",
-      borderRadius:"20",
-    },3500)
+      targets:".img3",
+      translateX:-420,
+      translateY:30
+    })
     tl.add({
-      targets:[".img6"],
-      duration: 1000,
-      scale:"0.75",
-      translateX:"-=880",
-      translateY:"90",
-      borderRadius:"20",
-    },3500)
+      targets:".img2",
+      translateX:-420,
+      translateY:-250
+    })
     tl.add({
-      targets:[".img7"],
-      duration: 1000,
-      scale:"0.75",
-      translateX:"-=300",
-      translateY:"250",
-      borderRadius:"20",
-    },3500)
-    tl.add({
-      targets:[".img8"],
-      duration: 1000,
-      scale:"0.75",
-      translateX:"-=200",
-      translateY:"35",
-      borderRadius:"20",
-    },3500)
-    tl.add({
-      targets:[".img1",".img2",".img3",".img4"],
-      duration: 2000,
-      width: "+=15rem",
-      height: "+=5rem",
-      rotate: 240
-    },1500)
-    tl.add({
-      targets:[".img1"],
-      duration: 1000,
-      scale:"0.75",
-      translateX:"30",
-      translateY:"-5",
-      borderRadius:"20",
-      // rotate:120
-    },3500)
-    tl.add({
-      targets:[".img2"],
-      duration: 1000,
-      scale:"0.75",
-      translateX:"405",
-      translateY:"-425",
-      borderRadius:"20"
-    },3500)
-    tl.add({
-      targets:[".img3"],
-      duration: 1000,
-      scale:"0.75",
-      translateX:"935",
-      translateY:"205",
-      borderRadius:"20"
-    },3500)
-    tl.add({
-      targets:[".img4"],
-      duration: 1000,
-      scale:"0.75",
-      translateX:"825",
-      translateY:"105",
-      borderRadius:"20"
-    },3500)
+      targets:".img1",
+      translateX:5,
+      translateY:-250
+    })
 
-    // gsap.from(".boxa", {
-    //   scrollTrigger: {
-    //     trigger: ".box-container",
-    //     start: "top top+=10%",  // [trigger] [scroller] positions
-    //     end: "bottom+=200% 80%", // [trigger] [scroller] positions
-    //     // or relative amount: "+=500"
-    //     scrub: true, // or time (in seconds) to catch up
-    //     pin: true, // or selector or element to pin
-    //     // markers: true, // only during development!
-    //   },
-    //   x: "110%",
-    //   stagger: {
-    //     amount: 1,
-    //     from: "start"
-    //   },
-    // }); // <-- automatically reverted
+    // -250,30,310,?
+   
     gsap.from(".boxb", {
       scrollTrigger: {
         trigger: ".boxb",
-        start: "top center+=20%",  // [trigger] [scroller] positions
-        end: "center+=200% 80%", // [trigger] [scroller] positions
+        start: "top 80%",  // [trigger] [scroller] positions
+        end: "center-=20% bottom", // [trigger] [scroller] positions
         // or relative amount: "+=500"
-        scrub: true, // or time (in seconds) to catch up
+        scrub: -1000, // or time (in seconds) to catch up
         // pin: true, // or selector or element to pin
 
         markers: true, // only during development!
@@ -343,20 +261,18 @@ const Home: React.FC<HomeProps> = ({ }) => {
           <br/> and other bio sections
           </h1>
       </div>
- <div className="relative w-full px-12 flex justify-center h-auto boxb">
-
-        <div className="grid grid-rows-3 grid-cols-3 w-40 h-auto demo grid-flow-col gap-12" >
-  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-2 img1'>111111</div>
-  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-1 img2'>222222</div>
-  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-3 img3'>333333</div>
-  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-2 img4'>444444</div>
-</div>
-        <div className="grid grid-rows-3 grid-cols-3 w-40 h-auto demo2 grid-flow-col gap-12 rotate-45 top-0 absolute">
-  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-2 img5'>555555</div>
-  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-1 img6'>666666</div>
-  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-3 img7'>777777</div>
-  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-full h-auto justify-self-center row-start-2 img8'>888888</div>
-</div>
+ <div className="relative w-full p-12 flex flex-row items-center justify-items-center h-auto boxb outline">
+  {/* <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-[25%] h-[44] img1'>111111</div> */}
+  <AspectRatio ratio={16 / 9} className='relative outline flex flex-row items-center justify-center'>
+    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img1"/>
+    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img2"/>
+    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img3"/>
+    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img4"/>
+    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img5"/>
+    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img6"/>
+    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img7"/>
+    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img8"/>
+  </AspectRatio>
  </div>
       </div>
 
