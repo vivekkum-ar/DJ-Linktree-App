@@ -179,8 +179,8 @@ const Home: React.FC<HomeProps> = ({ }) => {
     gsap.from(".boxb", {
       scrollTrigger: {
         trigger: ".boxb",
-        start: "top center+=10%",  // [trigger] [scroller] positions
-        end: "bottom+=200% 80%", // [trigger] [scroller] positions
+        start: "top center+=20%",  // [trigger] [scroller] positions
+        end: "center+=200% 80%", // [trigger] [scroller] positions
         // or relative amount: "+=500"
         scrub: true, // or time (in seconds) to catch up
         // pin: true, // or selector or element to pin
