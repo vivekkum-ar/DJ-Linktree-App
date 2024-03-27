@@ -100,7 +100,22 @@ const Home: React.FC<HomeProps> = ({ }) => {
       targets:['#img1','#img2','#img3','#img4','#img5','#img6','#img7','#img8'],
       rotate:() => anime.random(-10,10),
     })
-   
+    gsap.from(".boxa", {
+      scrollTrigger: {
+        trigger: ".box-container",
+        start: "top top+=10%",  // [trigger] [scroller] positions
+        end: "bottom+=200% 80%", // [trigger] [scroller] positions
+        // or relative amount: "+=500"
+        scrub: true, // or time (in seconds) to catch up
+        pin: true, // or selector or element to pin
+        markers: true, // only during development!
+      },
+      x: "110%",
+      stagger: {
+        amount:1,
+        from:"start",
+      },
+    });
     gsap.from(".round-card-target", {
       scrollTrigger: {
         trigger: ".round-card-trigger",
@@ -152,8 +167,8 @@ const Home: React.FC<HomeProps> = ({ }) => {
   return (
     <div className='w-full h-screen flex flex-col items-center'>
       <Jumbotron />
-      {/* <div className="w-full px-4 md:px-16 py-2 md:py-8 dark:bg-zinc-950 relative">
-        <div className="outline-1 outline outline-red-500 relative h-[30rem] box-container" ref={container}>
+       <div className="w-full px-4 md:px-16 py-2 md:py-8 dark:bg-zinc-950 relative">
+        <div className="outline-1 outline outline-red-500 relative h-[30rem] box-container" >
           <AnimatedCard id={0} title='Customizable QR Codes' description='Unify your digital presence with a single, scannable QR code.'
             features={[
               {
@@ -257,7 +272,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
             ]
           } lottieSource={sharingHeart}></AnimatedCard>
         </div>
-      </div>  */}
+      </div>  
  <div className="font-pregular text-center w-screen pt-12 pb-4 ">
         <h1 className="mb-4 text-3xl font-semibold tracking-tight round-card-trigger leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Add your links to your&nbsp; 
           <div className='inline-flex min-w-[5em]'>
@@ -267,8 +282,8 @@ const Home: React.FC<HomeProps> = ({ }) => {
           </div>
           <br/> and other bio sections
           </h1>
-          <div className="relative w-full p-12 flex flex-row items-center justify-center round-card-target outline h-[130vh]">
-      <RoundAnimationCard classes='absolute' animId={'img0'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/1.jpg'}></RoundAnimationCard>
+          <div className="relative w-full p-12 flex flex-row items-center justify-center round-card-target h-[130vh]">
+      <RoundAnimationCard classes='absolute z-10' animId={'img0'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/1.jpg'}></RoundAnimationCard>
       <RoundAnimationCard classes='absolute' animId={'img1'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/2.jpg'}></RoundAnimationCard>
       <RoundAnimationCard classes='absolute' animId={'img2'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/3.jpg'}></RoundAnimationCard>
       <RoundAnimationCard classes='absolute' animId={'img3'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/4.jpg'}></RoundAnimationCard>
