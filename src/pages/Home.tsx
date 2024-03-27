@@ -19,6 +19,7 @@ import managementAnim from "@/assets/lottie/Animation - 1736419664466.json"
 import AnimatedCard from '@/components/AnimatedCard';
 import { setTimeout } from 'timers/promises';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import RoundAnimationCard from '@/components/RoundAnimationCard';
 // import { WebConnect } from '@/assets/lottie/VUaU1Z4EFW.lottie';
 
 interface HomeProps {
@@ -47,58 +48,64 @@ const Home: React.FC<HomeProps> = ({ }) => {
     //   autoplay:false
     // });
     var tl = anime.timeline({
-      easing: 'easeOutExpo',
+      easing: 'easeOutSine',
       duration: 750,
       autoplay:false
     });
     tl.add({
-      targets:".img8",
+      targets:"#img1",
+      translateX:5,
+      translateY:-250
+    })
+    tl.add({
+      targets:"#img8",
       translateX:430,
       translateY:-250
-    },0)
+    })
     tl.add({
-      targets:".img7",
+      targets:"#img7",
       translateX:430,
       translateY:30
     })
     tl.add({
-      targets:".img6",
+      targets:"#img6",
       translateX:430,
       translateY:310
     })
     tl.add({
-      targets:".img5",
+      targets:"#img5",
       translateX:5,
       translateY:310
     })
     tl.add({
-      targets:".img4",
+      targets:"#img4",
       translateX:-420,
       translateY:310
     })
     tl.add({
-      targets:".img3",
+      targets:"#img3",
       translateX:-420,
       translateY:30
     })
     tl.add({
-      targets:".img2",
+      targets:"#img2",
       translateX:-420,
       translateY:-250
     })
     tl.add({
-      targets:".img1",
-      translateX:5,
-      translateY:-250
+      targets:"#img0",
+      scale:1.5,
     })
-
-    // -250,30,310,?
+    tl.add({
+      targets:['#img1','#img2','#img3','#img4','#img5','#img6','#img7','#img8'],
+      rotate:() => anime.random(-10,10),
+    })
    
-    gsap.from(".boxb", {
+    gsap.from(".round-card-target", {
       scrollTrigger: {
-        trigger: ".boxb",
-        start: "top 80%",  // [trigger] [scroller] positions
-        end: "center-=20% bottom", // [trigger] [scroller] positions
+        trigger: ".round-card-trigger",
+        start: "top top",  // [trigger] [scroller] positions
+        end: "bottom+=200% center-=20%", // [trigger] [scroller] positions
         // or relative amount: "+=500"
         scrub: -1000, // or time (in seconds) to catch up
         // pin: true, // or selector or element to pin
@@ -251,8 +258,8 @@ const Home: React.FC<HomeProps> = ({ }) => {
           } lottieSource={sharingHeart}></AnimatedCard>
         </div>
       </div>  */}
- <div className="font-pregular text-center w-screen pt-12 pb-4">
-        <h1 className="mb-4 text-3xl font-semibold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Add your links to your&nbsp; 
+ <div className="font-pregular text-center w-screen pt-12 pb-4 ">
+        <h1 className="mb-4 text-3xl font-semibold tracking-tight round-card-trigger leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Add your links to your&nbsp; 
           <div className='inline-flex min-w-[5em]'>
         <p className={`${count == 0 ? " animate__fast animate__fadeInDown" : " animate__fast animate__fadeOutDown hidden"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-violet-700 to-fuchsia-700 bg-clip-text text-transparent`}>Instagram </p>
     <p className={`${count == 1 ? " animate__fast animate__fadeInDown" : " animate__fast animate__fadeOutDown hidden"} animate__animated font-mbold inline-flex pb-3 bg-gradient-to-br from-blue-700 to-teal-900 bg-clip-text text-transparent`}>Facebook </p>
@@ -260,20 +267,33 @@ const Home: React.FC<HomeProps> = ({ }) => {
           </div>
           <br/> and other bio sections
           </h1>
+          <div className="relative w-full p-12 flex flex-row items-center justify-center round-card-target outline h-[130vh]">
+      <RoundAnimationCard classes='absolute' animId={'img0'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/1.jpg'}></RoundAnimationCard>
+      <RoundAnimationCard classes='absolute' animId={'img1'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/2.jpg'}></RoundAnimationCard>
+      <RoundAnimationCard classes='absolute' animId={'img2'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/3.jpg'}></RoundAnimationCard>
+      <RoundAnimationCard classes='absolute' animId={'img3'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/4.jpg'}></RoundAnimationCard>
+      <RoundAnimationCard classes='absolute' animId={'img4'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/5.jpg'}></RoundAnimationCard>
+      <RoundAnimationCard classes='absolute' animId={'img5'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/6.jpg'}></RoundAnimationCard>
+      <RoundAnimationCard classes='absolute' animId={'img6'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/7.jpg'}></RoundAnimationCard>
+      <RoundAnimationCard classes='absolute' animId={'img7'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/8.jpg'}></RoundAnimationCard>
+      <RoundAnimationCard classes='absolute' animId={'img8'} title={'Lorem Ipsum.'} description={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente commodi atque ipsum provident fuga, ratione reiciendis fugit tempore nostrum tempora.'} imageUrl={'./images/9.jpg'}></RoundAnimationCard>
       </div>
- <div className="relative w-full p-12 flex flex-row items-center justify-items-center h-auto boxb outline">
-  {/* <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-[25%] h-[44] img1'>111111</div> */}
-  <AspectRatio ratio={16 / 9} className='relative outline flex flex-row items-center justify-center'>
-    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img1"/>
-    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img2"/>
-    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img3"/>
-    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img4"/>
-    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img5"/>
-    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img6"/>
-    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img7"/>
-    <img src="./images/ph.jpg"  alt="Image" className="rounded-2xl absolute object-cover h-64 img8"/>
+      </div>
+      
+ {/* <div className="relative w-full p-12 flex flex-row items-center justify-items-center h-auto round-card-target">
+  <div style={{backgroundImage:"url('./images/ph.jpg')", backgroundRepeat:"no-repeat", backgroundSize:"cover"}} className='w-[25%] h-[44] img1'>111111</div>
+  <AspectRatio ratio={16 / 9} className='relative flex flex-row items-center justify-center'>
+    <img src = "./images/9.jpg" alt='img0' id="img0" className="rounded-2xl absolute object-cover h-64"/>
+    <img src = "./images/1.jpg" alt='img1' id="img1" className="rounded-2xl absolute object-cover h-64"/>
+    <img src = "./images/2.jpg" alt='img2' id="img2" className="rounded-2xl absolute object-cover h-64"/>
+    <img src = "./images/3.jpg" alt='img3' id="img3" className="rounded-2xl absolute object-cover h-64"/>
+    <img src = "./images/10.jpg" alt='img4' id="img4" className="rounded-2xl absolute object-cover h-64"/>
+    <img src = "./images/5.jpg" alt='img5' id="img5" className="rounded-2xl absolute object-cover h-64"/>
+    <img src = "./images/6.jpg" alt='img6' id="img6" className="rounded-2xl absolute object-cover h-64"/>
+    <img src = "./images/7.jpg" alt='img7' id="img7" className="rounded-2xl absolute object-cover h-64"/>
+    <img src = "./images/8.jpg" alt='img8' id="img8" className="rounded-2xl absolute object-cover h-64"/>
   </AspectRatio>
- </div>
+ </div> */}
       </div>
 
   )
