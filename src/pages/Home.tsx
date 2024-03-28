@@ -83,55 +83,63 @@ const Home: React.FC<HomeProps> = ({ }) => {
     }, 1500);
   }, [count])
 
-    const testimonialsData = [
-      {
-        text: "This app made sharing my social profiles so much easier. Highly recommended!",
-        number: 5,
-        url: "./images/user1.jpg"
-      },
-      {
-        text: "I love how professional my QR code looks. It’s a game-changer for my business.",
-        number: 4,
-        url: "./images/user2.jpg"
-      },
-      {
-        text: "A must-have app for creators and influencers. Simplifies everything!",
-        number: 3,
-        url: "./images/user3.jpg"
-      },
-      {
-        text: "The dynamic design and simplicity make it stand out from other apps.",
-        number: 3.7,
-        url: "./images/user4.jpg"
-      },
-      {
-        text: "Having all my links in one place has increased my online engagement significantly.",
-        number: 4,
-        url: "./images/user5.jpg"
-      },
-      {
-        text: "I can’t believe how easy it is to share my entire profile with a single QR code.",
-        number: 5,
-        url: "./images/user6.jpg"
-      },
-      {
-        text: "This app saves so much time and makes sharing effortless. Highly intuitive!",
-        number: 5,
-        url: "./images/user7.jpg"
-      },
-      {
-        text: "The perfect tool for professionals to boost their digital presence effectively.",
-        number: 5,
-        url: "./images/user8.jpg"
-      },
-      {
-        text: "The customization options are fantastic. Love the polished feel it provides!",
-        number: 4,
-        url: "./images/user9.jpg"
-      }
-    ];
-  
-  
+  const testimonialsData = [
+    {
+      name: "John Doe",
+      text: "This app made sharing my social profiles so much easier. Highly recommended!",
+      number: 5,
+      url: "./images/user1.jpg"
+    },
+    {
+      name: "Jane Smith",
+      text: "I love how professional my QR code looks. It’s a game-changer for my business.",
+      number: 4,
+      url: "./images/user2.jpg"
+    },
+    {
+      name: "Alex Johnson",
+      text: "A must-have app for creators and influencers. Simplifies everything!",
+      number: 3,
+      url: "./images/user3.jpg"
+    },
+    {
+      name: "Emily Davis",
+      text: "The dynamic design and simplicity make it stand out from other apps.",
+      number: 3.7,
+      url: "./images/user4.jpg"
+    },
+    {
+      name: "Michael Brown",
+      text: "Having all my links in one place has increased my online engagement significantly.",
+      number: 4,
+      url: "./images/user5.jpg"
+    },
+    {
+      name: "Sophia Wilson",
+      text: "I can’t believe how easy it is to share my entire profile with a single QR code.",
+      number: 5,
+      url: "./images/user6.jpg"
+    },
+    {
+      name: "Chris Taylor",
+      text: "This app saves so much time and makes sharing effortless. Highly intuitive!",
+      number: 5,
+      url: "./images/user7.jpg"
+    },
+    {
+      name: "Jessica Martinez",
+      text: "The perfect tool for professionals to boost their digital presence effectively.",
+      number: 5,
+      url: "./images/user8.jpg"
+    },
+    {
+      name: "David Lee",
+      text: "The customization options are fantastic. Love the polished feel it provides!",
+      number: 4,
+      url: "./images/user9.jpg"
+    }
+  ];
+
   // useGSAP(() => {
   //   // var tl = anime.timeline({
   //   //   easing: 'easeOutExpo',
@@ -385,53 +393,52 @@ const Home: React.FC<HomeProps> = ({ }) => {
                   animId={`img${index}`}
                   title={items.title}
                   description={items.description}
-                  imageUrl={`./images/${index+1}.jpg`}>
+                  imageUrl={`./images/${index + 1}.jpg`}>
                 </RoundAnimationCard>
               )
             })
           }
-          
+
         </div>
       </div>
       <div className="bg-zinc-950 w-screen h-full flex flex-row justify-center">
-      <Carousel className="w-full max-w-5xl px-12 bg-zinc-950">
-      <CarouselContent>
-       {
-        testimonialsData.map((item,index) => (
-          <CarouselItem key={index} className='md:basis-1/2 lg:basis-1/3'>
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center p-0 justify-center  dark:bg-zinc-950">
-                  {/* <span className="text-4xl font-semibold">{index + 1}</span> */}
-                  <div className="font-pmedium text-justify items-center flex flex-col p-2 w-full h-full bg-zinc-100 dark:bg-zinc-700" style={{clipPath:"polygon(100% 0, 100% 100%,50% 75%, 0 100%, 0 0)"}}>
-                  {item.text}
-                  <div className='flex flex-row pt-2'>
-                    {
-                      Array.from({length:Math.floor(item.number)}).map((_,index) => (
-                        <Icon icon={"fa-star"} className='text-amber-500'></Icon>
-                      ))
-                   }
-                    {
-                      Array.from({length:5 - Math.floor(item.number)}).map((_,index) => (
-                        <Icon icon={"fa-regular:star"} className='text-amber-500'></Icon>
-                      ))
-                   }
+        <Carousel className="w-full max-w-5xl px-12 bg-zinc-950">
+          <CarouselContent>
+            {
+              testimonialsData.map((item, index) => (
+                <CarouselItem key={index} className='md:basis-1/2 lg:basis-1/3'>
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex aspect-square items-center p-0 justify-center dark:bg-zinc-950">
+                        {/* <span className="text-4xl font-semibold">{index + 1}</span> */}
+                        <div className="font-pmedium rounded-t-2xl text-justify items-center flex flex-col p-2 w-full h-full bg-zinc-100 dark:bg-zinc-700" style={{ clipPath: "polygon(100% 0, 100% 100%,50% 75%, 0 100%, 0 0)" }}>
+                          <span className="text-center bg-gradient-to-tr from-amber-300 to-amber-600 bg-clip-text text-transparent font-bold  max-w-[60%] py-2 border-b-4 border-amber-500 mb-2 w-full text-lg outline">{item.name}</span>
+                          {item.text}
+                          <div className='flex flex-row pt-2'>
+                            {
+                              Array.from({ length: Math.floor(item.number) }).map((_, index) => (
+                                <Icon icon={"fa-star"} className='text-amber-500'></Icon>
+                              ))
+                            }
+                            {
+                              Array.from({ length: 5 - Math.floor(item.number) }).map((_, index) => (
+                                <Icon icon={"fa-regular:star"} className='text-amber-500'></Icon>
+                              ))
+                            }
+                          </div>
+                        </div>
+                        <img src="./images/1.jpg" alt="" className='rounded-full bottom-[2.0rem] absolute h-20 w-20 aspect-square' />
+                      </CardContent>
+                    </Card>
                   </div>
-                  </div>
-                    <img src="./images/1.jpg" alt="" className='rounded-full bottom-[2.0rem] absolute h-24 w-24 aspect-square' />
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselItem>
-        ))
-       }
-
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+                </CarouselItem>
+              ))
+            }
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
- 
     </div>
 
   )
