@@ -20,7 +20,7 @@ const colors = ["glass-blue","glass-teal","glass-violet","glass-lblue"];
 
 const AnimatedCard: React.FC<AnimatedCardProps> = ({ title, description, features, lottieSource, id, rotateLottieByDegree}) => {
     return (
-        <div className={`font-pbold text-white bg-red-200 rounded-xl glass glass-blue absolute top-0 left-0 w-[70rem] h-[30rem] ${id == 0 ? `${colors[id]}` : `${colors[id]} boxa`}`}>
+        <div className={`font-pbold text-white rounded-xl glass glass-blue absolute top-0 left-0 w-[70rem] h-[30rem] ${id == 0 ? `${colors[id]}` : `${colors[id]} boxa`}`}>
             <div className="flex flex-row h-full w-full">
                 <div className='p-8 basis-1/2 min-h-full'>
                     {/* <img src={socialSharingSvg} alt="Share your profile with your friends" className='w-52 h-52 opacity-100 absolute z-10 flex justify-self-center'/> */}

@@ -14,7 +14,13 @@ import { createRoot } from 'react-dom/client';
 import { setupIonicReact } from '@ionic/react';
 import ForgotPassword from './pages/Forgotpassword';
 import { ThemeProvider } from './components/theme-provider';
-
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 // Define the type for your context (if you have one)
 // type ContextType = {
   // Define properties, e.g., isLoggedIn: boolean;
@@ -24,6 +30,10 @@ import { ThemeProvider } from './components/theme-provider';
 
 export const UserContext = createContext<any>(null);
 
+export const signUpEmail = atom({
+  key: 'signUpEmail', // unique ID (with respect to other atoms/selectors)
+  default: 'IOS', // default value (aka initial value)
+});
 const App = () => {
   setupIonicReact();
   const [user,setUser] = useState(null);
@@ -38,8 +48,10 @@ const App = () => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+
   return (
     <StrictMode>
+      <RecoilRoot>
       <UserContext.Provider value={{user,setUser}}>
       <ThemeProvider>
       <BrowserRouter>
@@ -60,6 +72,7 @@ const App = () => {
       </BrowserRouter>
       </ThemeProvider>
       </UserContext.Provider>
+      </RecoilRoot>
     </StrictMode>
   );
 };

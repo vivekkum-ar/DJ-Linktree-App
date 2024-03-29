@@ -16,12 +16,14 @@ import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "@iconify/react/dist/iconify.js"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "@/firebase"
-import { useContext } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { UserContext } from "@/main"
 import { toast } from "@/hooks/use-toast"
+import Lottie from "lottie-react"
 
 const Login = () => {
   const {setUser} = useContext(UserContext);
+
   const navigate = useNavigate();
   const formSchema = z.object({
     email: z.string().email({
@@ -70,10 +72,10 @@ const Login = () => {
     })
   }
   return (
-    <div className="w-full h-screen flex justify-center p-2 mt-4">
-      <div className="w-2/5 flex flex-col justify-center items-center shadow-gray-600 shadow-xl rounded-2xl p-6 border border-gray-400">
+    <div className="w-full flex justify-center p-2 mt-4 dark:text-gray-200 dark:bg-zinc-950 h-screen ">
+      <div className="w-2/5 flex flex-col justify-center items-center rounded-s-2xl p-4 border dark:border-zinc-600 border-zinc-200 h-auto">
         <div className="flex flex-col gap-y-1 justify-center items-center ">
-          <h1 className="text-4xl font-pbold">
+          <h1 className="text-2xl font-pbold dark:text-gray-200 ">
             Login
           </h1>
           <h6 className="text-md font-pregular mb-3 text-gray-400">
@@ -105,7 +107,9 @@ const Login = () => {
                 <FormItem>
                   <FormLabel className="font-pmedium">Password</FormLabel>
                   <FormControl>
-                    <Input className="font-pregular" placeholder="●●●●●●●●" type="password" {...field} />
+                    <div className="relative h-fit justify-end flex flex-row">
+                    <Input className="font-pregular" placeholder="●●●●●●●●" type={`text`} {...field} />
+                   </div>
                   </FormControl>
                   <FormDescription>
                     Fogot your password? <Link to="/forgotpassword" className="text-violet-500 font-pregular">Reset here</Link>
@@ -122,6 +126,10 @@ const Login = () => {
           Already have an account? <Link to="/signup" className="text-violet-500 font-pmedium underline">Sign Up</Link>
           </h6>
         </div>
+      </div>
+      <div className="w-2/5 flex flex-col justify-center items-center rounded-e-2xl p-4 border border-white dark:border-zinc-600 bg-zinc-200 h-auto relative" >
+      <h2 className="z-10 font-pbold text-4xl scale-125 bg-clip-text bg-gradient-to-r absolute top-0 from-violet-700 to-fuchsia-600 pt-2 text-transparent justify-center flex flex-row">Forgot password ?</h2>
+      <img src="./images/login.svg" alt=""  className=" absolute bottom-0 h-fit"/>
       </div>
     </div>
   )

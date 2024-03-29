@@ -65,10 +65,10 @@ const Login = () => {
     // console.log(values)
   }
   return (
-    <div className="w-full h-screen flex justify-center p-2 mt-4">
-      <div className="w-2/5 flex flex-col justify-center items-center shadow-gray-600 shadow-xl rounded-2xl p-6 border border-gray-400">
+    <div className="w-full flex justify-center p-2 mt-4 dark:text-gray-200 dark:bg-zinc-950 h-screen ">
+      <div className="w-2/5 flex flex-col justify-center items-center rounded-s-2xl p-4 border dark:border-zinc-600 border-zinc-200 h-auto">
         <div className="flex flex-col gap-y-1 justify-center items-center ">
-          <h1 className="text-4xl font-pbold">
+          <h1 className="text-2xl font-pbold dark:text-gray-200 ">
             Reset Password
           </h1>
           <h6 className="text-md font-pregular mb-3 text-gray-400">
@@ -98,6 +98,10 @@ const Login = () => {
             Go back to <Link to="/login" className="text-violet-500 font-pmedium underline">Login</Link>
           </h6>
         </div>
+      </div>
+      <div className="w-2/5 flex flex-col justify-center items-center rounded-e-2xl p-4 border border-white dark:border-zinc-600 bg-zinc-200 h-auto relative" >
+      <h2 className="z-10 font-pbold text-4xl scale-125 bg-clip-text bg-gradient-to-r absolute top-0 from-violet-700 to-fuchsia-600 pt-2 text-transparent justify-center flex flex-row">Forgot password ?</h2>
+      <img src="./images/password.svg" alt=""  className=" absolute bottom-0 h-fit"/>
       </div>
     </div>
   )
