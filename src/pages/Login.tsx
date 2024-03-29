@@ -20,9 +20,24 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { UserContext } from "@/main"
 import { toast } from "@/hooks/use-toast"
 import Lottie from "lottie-react"
+import eyeAnimation from "@/assets/lottie/0FKUSvV16M.json"
+import { LottieRefCurrentProps } from "lottie-react";
 
 const Login = () => {
   const {setUser} = useContext(UserContext);
+  const [showPassword, setShowPassword] = useState(false);
+  useEffect(() => {
+    lottieRef.current?.stop();
+    lottieRef.current?.setSpeed(0.5);
+    if(showPassword == true){
+      lottieRef.current?.playSegments([0,45],false);
+    }
+    else{
+      lottieRef.current?.goToAndStop(5.7,true);
+    }
+  }, [showPassword])
+    
+  const lottieRef = useRef<LottieRefCurrentProps | null>(null);
 
   const navigate = useNavigate();
   const formSchema = z.object({
@@ -108,8 +123,9 @@ const Login = () => {
                   <FormLabel className="font-pmedium">Password</FormLabel>
                   <FormControl>
                     <div className="relative h-fit justify-end flex flex-row">
-                    <Input className="font-pregular" placeholder="●●●●●●●●" type={`text`} {...field} />
-                   </div>
+                    <Input className="font-pregular" placeholder="●●●●●●●●" type={`${showPassword ? "text" : "password"}`} {...field} />
+                    <Lottie lottieRef={lottieRef} onClick={() => {setShowPassword(!showPassword);}} className="absolute cursor-pointer top-0 w-10 h-10" animationData={eyeAnimation} />
+                    </div>
                   </FormControl>
                   <FormDescription>
                     Fogot your password? <Link to="/forgotpassword" className="text-violet-500 font-pregular">Reset here</Link>
