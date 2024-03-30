@@ -16,12 +16,30 @@ import { Icon } from "@iconify/react"
 // import { auth } from "@/firebase"
 import { createUserWithEmailAndPassword, FacebookAuthProvider, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth"
 import { useToast } from "@/hooks/use-toast"
-import { useContext } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { UserContext } from "@/main"
 import { auth, provider } from "@/firebase"
+import Lottie from "lottie-react"
+import eyeAnimation from "@/assets/lottie/0FKUSvV16M.json"
+import { LottieRefCurrentProps } from "lottie-react";
 
 const Signup = () => {
   const { user, setUser } = useContext(UserContext);
+  const [showPassword, setShowPassword] = useState(false);
+  useEffect(() => {
+    lottieRef.current?.stop();
+    lottieRef.current?.setSpeed(0.5);
+    if(showPassword == true){
+      lottieRef.current?.playSegments([0,45],false);
+    }
+    else{
+      lottieRef.current?.goToAndStop(5.7,true);
+    }
+  }, [showPassword])
+    
+  const lottieRef = useRef<LottieRefCurrentProps | null>(null);
+
+
   const navigate = useNavigate();
   const { toast } = useToast();
   const formSchema = z.object({
@@ -226,7 +244,10 @@ const Signup = () => {
                 <FormItem>
                   <FormLabel className="font-pmedium">Password</FormLabel>
                   <FormControl>
-                    <Input className="font-pregular" placeholder="●●●●●●●●" type="password" {...field} />
+                  <div className="relative h-fit justify-end flex flex-row">
+                    <Input className="font-pregular" placeholder="●●●●●●●●" type={`${showPassword ? "text" : "password"}`} {...field} />
+                    <Lottie lottieRef={lottieRef} onClick={() => {setShowPassword(!showPassword);}} className="absolute cursor-pointer top-0 w-10 h-10" animationData={eyeAnimation} />
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
