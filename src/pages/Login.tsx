@@ -21,11 +21,15 @@ import { UserContext } from "@/main"
 import { toast } from "@/hooks/use-toast"
 import Lottie from "lottie-react"
 import eyeAnimation from "@/assets/lottie/0FKUSvV16M.json"
+import eyeAnimationDark from "@/assets/lottie/0FKUSvV16M-dark.json"
 import { LottieRefCurrentProps } from "lottie-react";
+import { useTheme } from "@/components/theme-provider"
 
 const Login = () => {
   const {setUser} = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
+  const {theme , setTheme} = useTheme();
+
   useEffect(() => {
     lottieRef.current?.stop();
     lottieRef.current?.setSpeed(0.5);
@@ -124,7 +128,7 @@ const Login = () => {
                   <FormControl>
                     <div className="relative h-fit justify-end flex flex-row">
                     <Input className="font-pregular" placeholder="●●●●●●●●" type={`${showPassword ? "text" : "password"}`} {...field} />
-                    <Lottie lottieRef={lottieRef} onClick={() => {setShowPassword(!showPassword);}} className="absolute cursor-pointer top-0 w-10 h-10" animationData={eyeAnimation} />
+                    <Lottie lottieRef={lottieRef} onClick={() => {setShowPassword(!showPassword);}} className="text-white absolute cursor-pointer top-0 w-10 h-10" animationData={theme == "dark" ? eyeAnimationDark : eyeAnimation} />
                     </div>
                   </FormControl>
                   <FormDescription>
