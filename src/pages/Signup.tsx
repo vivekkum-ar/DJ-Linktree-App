@@ -21,7 +21,9 @@ import { UserContext } from "@/main"
 import { auth, provider } from "@/firebase"
 import Lottie from "lottie-react"
 import eyeAnimation from "@/assets/lottie/0FKUSvV16M.json"
+import eyeAnimationDark from "@/assets/lottie/0FKUSvV16M-dark.json"
 import { LottieRefCurrentProps } from "lottie-react";
+import { useTheme } from "@/components/theme-provider";
 
 const Signup = () => {
   const { user, setUser } = useContext(UserContext);
@@ -39,6 +41,7 @@ const Signup = () => {
     
   const lottieRef = useRef<LottieRefCurrentProps | null>(null);
 
+  const {theme , setTheme} = useTheme();
 
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -246,7 +249,7 @@ const Signup = () => {
                   <FormControl>
                   <div className="relative h-fit justify-end flex flex-row">
                     <Input className="font-pregular" placeholder="●●●●●●●●" type={`${showPassword ? "text" : "password"}`} {...field} />
-                    <Lottie lottieRef={lottieRef} onClick={() => {setShowPassword(!showPassword);}} className="absolute cursor-pointer top-0 w-10 h-10" animationData={eyeAnimation} />
+                    <Lottie lottieRef={lottieRef} onClick={() => {setShowPassword(!showPassword);}} className="text-white absolute cursor-pointer top-0 w-10 h-10" animationData={theme == "dark" ? eyeAnimationDark : eyeAnimation} />
                     </div>
                   </FormControl>
                   <FormMessage />
