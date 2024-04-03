@@ -17,17 +17,21 @@ import { Icon } from "@iconify/react"
 import { createUserWithEmailAndPassword, FacebookAuthProvider, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth"
 import { useToast } from "@/hooks/use-toast"
 import { useContext, useEffect, useRef, useState } from "react"
-import { UserContext } from "@/main"
+import { signUpEmail, UserContext } from "@/main"
 import { auth, provider } from "@/firebase"
 import Lottie from "lottie-react"
 import eyeAnimation from "@/assets/lottie/0FKUSvV16M.json"
 import eyeAnimationDark from "@/assets/lottie/0FKUSvV16M-dark.json"
 import { LottieRefCurrentProps } from "lottie-react";
 import { useTheme } from "@/components/theme-provider";
+import { useRecoilState } from "recoil"
 
 const Signup = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
+  const [signUpMail, setSignUpMail] = useRecoilState(signUpEmail);
+  
+
   useEffect(() => {
     lottieRef.current?.stop();
     lottieRef.current?.setSpeed(0.5);
@@ -41,7 +45,7 @@ const Signup = () => {
     
   const lottieRef = useRef<LottieRefCurrentProps | null>(null);
 
-  const {theme , setTheme} = useTheme();
+  const {theme} = useTheme();
 
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -61,7 +65,7 @@ const Signup = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
+      email: signUpMail,
     },
   })
 
@@ -126,7 +130,7 @@ const Signup = () => {
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential?.accessToken;
     // The signed-in user info.
-    // console.log("token",token);
+    if(token){};
     const user = result.user;
     // console.log("user",user);
     setUser(user);
@@ -142,8 +146,10 @@ const Signup = () => {
     // Handle Errors here.
     // The email of the user's account used.
     const email = error.customData.email;
+    if(email){}
     // The AuthCredential type that was used.
     const credential = GoogleAuthProvider.credentialFromError(error);
+    if(credential){}
     toast({
       title: `Error ${error.code}`,
       description: error.message,
@@ -162,6 +168,7 @@ const Signup = () => {
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
     const credential = FacebookAuthProvider.credentialFromResult(result);
     const accessToken = credential?.accessToken;
+    if(accessToken){}
     toast({
       title: "Sign-Up Successful.",
       description: `Your account is ready. Please log in to continue.`,
@@ -180,6 +187,7 @@ const Signup = () => {
     // const email = error.customData.email;
     // The AuthCredential type that was used.
     const credential = FacebookAuthProvider.credentialFromError(error);
+    if(credential){}
     toast({
       title: `Error ${error.code}`,
       description: error.message,
@@ -266,7 +274,7 @@ const Signup = () => {
         </div>
       </div> 
       <div className="w-2/5 flex flex-col justify-center items-center rounded-e-2xl p-4 border border-white dark:border-zinc-600 bg-zinc-200 h-auto relative" >
-      <h2 className="z-10 font-pbold text-4xl scale-125 bg-clip-text bg-gradient-to-r absolute top-0 from-violet-700 to-fuchsia-600 pt-2 text-transparent justify-center flex flex-row">Forgot password ?</h2>
+      <h2 className="z-10 font-pbold text-4xl scale-125 bg-clip-text bg-gradient-to-r absolute top-0 from-violet-700 to-fuchsia-600 pt-2 text-transparent justify-center flex flex-row">Welcome {form.getValues("username")} !</h2>
       <img src="./images/login.svg" alt=""  className="absolute bottom-0 h-fit"/>
       </div>
     </div>

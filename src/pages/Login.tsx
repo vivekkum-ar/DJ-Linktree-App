@@ -28,7 +28,7 @@ import { useTheme } from "@/components/theme-provider"
 const Login = () => {
   const {setUser} = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
-  const {theme , setTheme} = useTheme();
+  const {theme} = useTheme();
 
   useEffect(() => {
     lottieRef.current?.stop();
@@ -148,7 +148,7 @@ const Login = () => {
         </div>
       </div>
       <div className="w-2/5 flex flex-col justify-center items-center rounded-e-2xl p-4 border border-white dark:border-zinc-600 bg-zinc-200 h-auto relative" >
-      <h2 className="z-10 font-pbold text-4xl scale-125 bg-clip-text bg-gradient-to-r absolute top-0 from-violet-700 to-fuchsia-600 pt-2 text-transparent justify-center flex flex-row">Forgot password ?</h2>
+      <h2 className="z-10 font-pbold text-4xl scale-125 bg-clip-text bg-gradient-to-r absolute top-0 from-violet-700 to-fuchsia-600 pt-2 text-transparent justify-center flex flex-row">Welcome back !</h2>
       <img src="./images/login.svg" alt=""  className=" absolute bottom-0 h-fit"/>
       </div>
     </div>

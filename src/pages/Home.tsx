@@ -1,32 +1,23 @@
 import { Button } from '@/components/ui/button';
 // import { IonButton, IonAlert } from '@ionic/react';
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IDetectedBarcode, outline, Scanner } from '@yudiel/react-qr-scanner';
 // import { AspectRatio } from '@radix-ui/react-aspect-ratio';
-import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Jumbotron from '@/components/Jumbotron';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import 'animate.css';
-// import socialSharingSvg from "@/assets/social-sharing.svg"
-// import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import anime from 'animejs/lib/anime.es.js';
 import webIcons from "@/assets/lottie/VUaU1Z4EFW.json"
 import testAnimation from "@/assets/lottie/Animation - 1736418970643.json"
 import sharingHeart from "@/assets/lottie/Animation - 1736419815712.json"
 import managementAnim from "@/assets/lottie/Animation - 1736419664466.json"
 import AnimatedCard from '@/components/AnimatedCard';
-import { setTimeout } from 'timers/promises';
-import { AspectRatio } from '@/components/ui/aspect-ratio';
 import RoundAnimationCard from '@/components/RoundAnimationCard';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
 // import { WebConnect } from '@/assets/lottie/VUaU1Z4EFW.lottie';
-import Autoplay from "embla-carousel-autoplay"
-import { Bird } from 'lucide-react';
 import { Icon } from '@iconify/react/dist/iconify.js';
-import Footer from '@/components/footer';
 import { useRecoilState } from 'recoil';
 import { signUpEmail } from '@/main';
 interface HomeProps {
@@ -246,6 +237,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
 
   const customTracker = (detectedCodes: IDetectedBarcode[], ctx: CanvasRenderingContext2D): void => {
     // Clear the canvas
+    customTracker
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     // Use the 'outline' helper to draw bounding boxes
     outline(detectedCodes, ctx);
@@ -540,7 +532,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
               </div>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <a href="#" className="hover:underline">{signUpmail}</a>
+                  <a href="#" className="hover:underline">IOS</a>
                 </li>
                 <li className="mb-4">
                   <a href="#" className="hover:underline">Android</a>

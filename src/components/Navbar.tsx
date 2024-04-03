@@ -10,7 +10,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { DarkModeToggle } from './mode-toggle';
 import DropdownMain from './ui/dropdown-menu';
 
@@ -36,6 +36,9 @@ const components: { title: string; href: string; description: string }[] = [
 ]
 
 export function NavigationMenu1() {
+
+  const navigate = useNavigate();
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -49,7 +52,7 @@ export function NavigationMenu1() {
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
-                    <div className={`font-mbold flex justify-center text-3xl flex-row items-center`}>
+                    <div className={`font-mbold flex justify-center text-3xl flex-row items-center cursor-pointer`} onClick={() => {navigate("/home")}}>
                       <h1 className='absolute shadow-xl text-2xl text-violet-700 font-mextrabold'>Dj</h1>
                       <Icon className=' text-violet-400 opacity-70' icon="jam:qr-code" width={55} height={55} />
                     </div>
@@ -174,12 +177,13 @@ interface NavbarProps {
 /* ---------------------------------------------------------------------------------------------- */
 
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
+  const navigate = useNavigate();
   console.log(className);
   return (
     // <div className={`flex flex-col justify-center items-center ${className} z-30 outline outline-red-500 h-4`}>
       <div className="pe-6 py-2 top-0 fixed z-30 bg-inherit w-full">
         <div className="flex flex-row w-full justify-between max-w-screen-xl mx-auto">
-        <div className={`font-mbold flex justify-center text-3xl flex-row w-[5%] ms-6 h-12 items-center`}>
+        <div className={`font-mbold flex justify-center text-3xl flex-row w-[5%] ms-6 h-12 items-center cursor-pointer`}  onClick={() => {navigate("/home")}}>
           <h1 className='absolute shadow-xl text-2xl text-violet-700 font-mextrabold'>Dj</h1>
           <Icon className=' text-violet-400 opacity-40' icon="jam:qr-code" width="55px" height="55px" />
         </div>

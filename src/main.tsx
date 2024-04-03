@@ -32,7 +32,7 @@ export const UserContext = createContext<any>(null);
 
 export const signUpEmail = atom({
   key: 'signUpEmail', // unique ID (with respect to other atoms/selectors)
-  default: 'IOS', // default value (aka initial value)
+  default: '', // default value (aka initial value)
 });
 const App = () => {
   setupIonicReact();
@@ -41,7 +41,7 @@ const App = () => {
   const storedTheme = localStorage.getItem('theme') || 'media';
 
   // State to manage the theme
-  const [theme, setTheme] = useState(storedTheme);
+  const [theme] = useState(storedTheme);
 
   // Effect to update the localStorage when the theme changes
   useEffect(() => {
