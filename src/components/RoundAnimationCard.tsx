@@ -1,5 +1,4 @@
 import React from "react";
-import { AspectRatio } from "./ui/aspect-ratio";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 interface RoundAnimationCardProps {

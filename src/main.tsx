@@ -17,9 +17,9 @@ import { ThemeProvider } from './components/theme-provider';
 import {
   RecoilRoot,
   atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
+  // selector,
+  // useRecoilState,
+  // useRecoilValue,
 } from 'recoil';
 import GettingStarted from './pages/getting-started/GettingStarted';
 import AddingHandles from './pages/getting-started/AddingHandles';
