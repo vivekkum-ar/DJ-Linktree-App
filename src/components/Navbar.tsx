@@ -65,7 +65,7 @@ export function NavigationMenu1() {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/getting-started" title="About Us">
+              <ListItem href="/about" title="About Us">
                 How to get started with this QR app?
               </ListItem>
               <ListItem href="/adding-your-handles" title="Adding Links">
