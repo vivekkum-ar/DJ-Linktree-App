@@ -65,13 +65,13 @@ export function NavigationMenu1() {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/about" title="About Us">
+              <ListItem href="/getting-started/about" title="About Us">
                 How to get started with this QR app?
               </ListItem>
-              <ListItem href="/adding-your-handles" title="Adding Links">
+              <ListItem href="/getting-started/adding-your-handles" title="Adding Links">
                 How to add your social media handles at one place?
               </ListItem>
-              <ListItem href="/Services" title="Services">
+              <ListItem href="/getting-started/Services" title="Services">
                 Explore the range of services we provide related to social media.
               </ListItem>
             </ul>

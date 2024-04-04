@@ -21,7 +21,7 @@ const RoundAnimationCard: React.FC<RoundAnimationCardProps> = ({
   animId,
 }) => {
   return (
-    <div className={`w-fit min-h-fit flex ${classes}`} id={animId}>
+    <div className={`w-fit min-h-fit flex cardss ${classes}`} id={animId}>
       <div
         className="relative flex flex-row h-56 rounded-2xl w-96 before:w-full before:h-full before:rounded-2xl before:bg-slate-900 before:opacity-50 before:absolute before:block transition duration-150 ease-linear"
         style={{

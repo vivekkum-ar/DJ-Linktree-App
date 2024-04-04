@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.mdxmdx > * {
+  all: revert;
+}
+
+html.dark{
+  background: #09090b;
+}
+
+.glow-bpink{
+  background: linear-gradient(125deg, aqua 13%, deeppink 38%);
+  -webkit-mask: radial-gradient(circle at 20% 50%, black 0%, transparent 25%);
+}
 
 .glass{
   /* background: rgba( 255, 255, 255, 1 ); */
