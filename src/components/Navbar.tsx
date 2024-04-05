@@ -17,23 +17,45 @@ import DropdownMain from './ui/dropdown-menu';
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Privacy Policy",
-    href: "/docs/legal/privacy-policy",
+    href: "/legal/privacy-policy",
     description:
       "Details on how we collect, use, and protect your personal information.",
   },
   {
     title: "Terms & Conditions",
-    href: "/docs/legal/terms-conditions",
+    href: "/legal/terms-conditions",
     description:
       "The rules and guidelines for using our services and accessing our website.",
   },
   {
     title: "Usage of Data",
-    href: "/docs/legal/data-usage",
+    href: "/legal/data-usage",
     description:
       "Information on how we handle, store, and utilize the data you provide.",
   },
 ]
+
+const components2: { title: string; href: string; description: string }[] = [
+  {
+    title: "Template Gallery",
+    href: "/templates/template-gallery",
+    description:
+      "Browse a variety of templates to personalize your QR profile.",
+  },
+  {
+    title: "Customization Guide",
+    href: "/templates/customization-guide",
+    description:
+      "Learn how to customize colors, fonts, and layouts for your template.",
+  },
+  {
+    title: "Examples",
+    href: "/templates/examples",
+    description:
+      "Explore examples of QR profiles created by others for inspiration.",
+  },
+];
+
 
 export function NavigationMenu1() {
 
@@ -48,9 +70,9 @@ export function NavigationMenu1() {
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
+                  <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
+                    to="/"
                   >
                     <div className={`font-mbold flex justify-center text-3xl flex-row items-center cursor-pointer`} onClick={() => {navigate("/home")}}>
                       <h1 className='absolute shadow-xl text-2xl text-violet-700 font-mextrabold'>Dj</h1>
@@ -62,18 +84,20 @@ export function NavigationMenu1() {
                     <p className="text-sm leading-tight text-muted-foreground text-justify">
                       Effortlessly showcase all your social media profiles and links in one place. Simple to set up, fully customizable, and designed to enhance your online presence.
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/getting-started/about" title="About Us">
-                How to get started with this QR app?
-              </ListItem>
-              <ListItem href="/getting-started/adding-your-handles" title="Adding Links">
-                How to add your social media handles at one place?
-              </ListItem>
-              <ListItem href="/getting-started/Services" title="Services">
-                Explore the range of services we provide related to social media.
-              </ListItem>
+              {components2.map((component) => (
+                <Link to={component.href}>
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  // href={component.href}
+                  >
+                  {component.description}
+                </ListItem>
+                  </Link>
+              ))}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -82,13 +106,15 @@ export function NavigationMenu1() {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:grid-cols-1 ">
               {components.map((component) => (
+                <Link to={component.href}>
                 <ListItem
                   key={component.title}
                   title={component.title}
-                  href={component.href}
-                >
+                  // href={component.href}
+                  >
                   {component.description}
                 </ListItem>
+                  </Link>
               ))}
             </ul>
           </NavigationMenuContent>
@@ -120,15 +146,21 @@ export function NavigationMenu1() {
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-1">
 
-              <ListItem href="/template-gallery" title="Template Gallery">
+                <Link to="/templates/template-gallery">
+              <ListItem title="Template Gallery">
                 Browse a variety of templates to personalize your QR profile.
               </ListItem>
-              <ListItem href="/customization-guide" title="Customization Guide">
+                </Link>
+                <Link to="/templates/customization-guide">
+              <ListItem title="Customization Guide">
                 Learn how to customize colors, fonts, and layouts for your template.
               </ListItem>
-              <ListItem href="/examples" title="Examples">
+                </Link>
+                <Link to="/templates/examples">
+              <ListItem title="Examples">
                 Explore examples of QR profiles created by others for inspiration.
               </ListItem>
+                </Link>
             </ul>
           </NavigationMenuContent>
 
