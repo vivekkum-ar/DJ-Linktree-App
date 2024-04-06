@@ -3,6 +3,7 @@ import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import { cn } from "@/lib/utils"
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from "@radix-ui/react-icons"
 import { Icon } from "@iconify/react/dist/iconify.js"
+import { Link } from "react-router-dom"
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 
@@ -207,7 +208,9 @@ const DropdownMain = () => {
       <Icon icon="solar:hamburger-menu-linear" className='text-violet-500 bg-transparent rounded-full border-2 p-2' width="40px" height="40px"  style={{}} />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 z-30 font-plight">
+        <Link to="/home">
         <DropdownMenuLabel className="font-pbold">DJQR</DropdownMenuLabel>
+        </Link>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuSub>
@@ -216,9 +219,9 @@ const DropdownMain = () => {
               <DropdownMenuSubContent>
                 {/* <DropdownMenuItem>DJQR</DropdownMenuItem> */}
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>About us</DropdownMenuItem>
-                <DropdownMenuItem>Adding Links</DropdownMenuItem>
-                <DropdownMenuItem>Services</DropdownMenuItem>
+                <Link to="/getting-started/about"><DropdownMenuItem>About Us</DropdownMenuItem></Link>
+                <Link to="/getting-started/adding-your-handles"><DropdownMenuItem>Adding Links</DropdownMenuItem></Link>
+                <Link to="/getting-started/services"><DropdownMenuItem>Services</DropdownMenuItem></Link>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
@@ -226,9 +229,9 @@ const DropdownMain = () => {
             <DropdownMenuSubTrigger>Legal</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>Privacy</DropdownMenuItem>
-                <DropdownMenuItem>TnC</DropdownMenuItem>
-                <DropdownMenuItem>Usage of data</DropdownMenuItem>
+                <Link to="/legal/privacy-policy"><DropdownMenuItem>Privacy Policy</DropdownMenuItem></Link>
+                <Link to="/legal/terms-conditions"><DropdownMenuItem>TnC</DropdownMenuItem></Link>
+                <Link to="/legal/data-usage"><DropdownMenuItem>Usage of Data</DropdownMenuItem></Link>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
@@ -244,9 +247,9 @@ const DropdownMain = () => {
             <DropdownMenuSubTrigger>Templates</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>Template Gallery</DropdownMenuItem>
-                <DropdownMenuItem>Customization Guide</DropdownMenuItem>
-                <DropdownMenuItem>Examples</DropdownMenuItem>
+              <Link to="/templates/template-gallery"><DropdownMenuItem>Template Gallery</DropdownMenuItem></Link>
+                <Link to="/templates/customization-guide"><DropdownMenuItem>Customization Guide</DropdownMenuItem></Link>
+                <Link to="/templates/examples"><DropdownMenuItem>Examples</DropdownMenuItem></Link>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>

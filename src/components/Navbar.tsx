@@ -37,20 +37,20 @@ const components: { title: string; href: string; description: string }[] = [
 
 const components2: { title: string; href: string; description: string }[] = [
   {
-    title: "Template Gallery",
-    href: "/templates/template-gallery",
+    title: "About Us",
+    href: "/getting-started/about",
     description:
       "Browse a variety of templates to personalize your QR profile.",
   },
   {
-    title: "Customization Guide",
-    href: "/templates/customization-guide",
+    title: "Adding Links",
+    href: "/getting-started/adding-your-handles",
     description:
       "Learn how to customize colors, fonts, and layouts for your template.",
   },
   {
-    title: "Examples",
-    href: "/templates/examples",
+    title: "Services",
+    href: "/getting-started/Services",
     description:
       "Explore examples of QR profiles created by others for inspiration.",
   },
