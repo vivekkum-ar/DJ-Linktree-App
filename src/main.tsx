@@ -14,6 +14,7 @@ import { createRoot } from 'react-dom/client';
 import { setupIonicReact } from '@ionic/react';
 import ForgotPassword from './pages/Forgotpassword';
 import { ThemeProvider } from './components/theme-provider';
+import { ClerkProvider } from '@clerk/clerk-react'
 import {
   RecoilRoot,
   atom,
@@ -35,6 +36,12 @@ import Gallery from './pages/Templates/Gallery';
 //   setUser:any,
 //   user:any
 // };
+// Import your Publishable Key
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key")
+}
 
 export const UserContext = createContext<any>(null);
 
@@ -59,6 +66,7 @@ const App = () => {
 
   return (
     <StrictMode>
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <RecoilRoot>
         <UserContext.Provider value={{ user, setUser }}>
           <ThemeProvider>
@@ -95,6 +103,7 @@ const App = () => {
           </ThemeProvider>
         </UserContext.Provider>
       </RecoilRoot>
+      </ClerkProvider>
     </StrictMode>
   );
 };
