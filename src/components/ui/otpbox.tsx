@@ -40,7 +40,7 @@ export function InputOTPForm() {
     toast({
       title: "You submitted the following values:",
       description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+        <pre className="mt-2 w-[340px] rounded-md bg-zinc-900 p-4">
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -55,7 +55,7 @@ export function InputOTPForm() {
           name="pin"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>One-Time Password</FormLabel>
+              {/* <FormLabel className="dark:text-white text-zinc-900">One-Time Password</FormLabel> */}
               <FormControl>
                 <InputOTP maxLength={6} {...field}>
                   <InputOTPGroup>
@@ -69,7 +69,7 @@ export function InputOTPForm() {
                 </InputOTP>
               </FormControl>
               <FormDescription>
-                Please enter the one-time password sent to your phone.
+                Please enter the one-time password sent to your email.
               </FormDescription>
               <FormMessage />
             </FormItem>

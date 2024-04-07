@@ -76,15 +76,13 @@ const Signup = () => {
   })
   const { isLoaded, signUp, setActive } = useSignUp()
   const [verifying, setVerifying] = useState(false)
+
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     setVerifying(true);
     if (!isLoaded) return
-    if(verifying){
-      <InputOTPForm />
-    }
     // console.log(values);
     // const auth = getAuth();
   //   createUserWithEmailAndPassword(auth, values.email, values.password)
@@ -215,13 +213,13 @@ const Signup = () => {
       <div className="w-2/5 flex flex-col justify-center items-center rounded-s-2xl p-4 border dark:border-zinc-600 border-zinc-200 h-auto">
         <div className="flex flex-col gap-y-1 justify-center items-center ">
           <h1 className="text-2xl font-pbold dark:text-gray-200 ">
-            Sign Up{verifying.toString()}
+            Sign Up
           </h1>
           <h6 className="text-md font-pregular mb-3 text-gray-400">
             Create an account to get started
           </h6>
         </div>
-        <OtpDialog></OtpDialog>
+        <OtpDialog open={verifying} updateOpen={setVerifying}></OtpDialog>
         <div className="flex flex-row gap-2">
         <Icon onClick={() => console.log("first")} icon="devicon:google" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
         <Icon onClick={() => document.getElementById("signup-submit")?.click()} icon="dashicons:email-alt" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>

@@ -6,19 +6,26 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import { InputOTPForm } from "./ui/otpbox"
+import { useState } from "react";
 
-function OtpDialog() {
+interface dialogParams{
+    open:boolean
+    updateOpen: (open: boolean) => void
+}
+
+const OtpDialog: React.FC<dialogParams> = ({ open, updateOpen }) => {
     return (
-        <Dialog>
-            <DialogTrigger>Open</DialogTrigger>
-            <DialogContent>
-                <DialogHeader>
-                    <DialogTitle>Are you absolutely sure?</DialogTitle>
-                    <DialogDescription>
+        <Dialog open={open} onOpenChange={updateOpen}>
+            <DialogContent className="dark:text-white text-zinc-900"> 
+                <DialogHeader className="">
+                    <DialogTitle className="">One-Time Password</DialogTitle>
+                    {/* <DialogDescription>
                         This action cannot be undone. This will permanently delete your account
                         and remove your data from our servers.
-                    </DialogDescription>
+                    </DialogDescription> */}
                 </DialogHeader>
+                <InputOTPForm></InputOTPForm>
             </DialogContent>
         </Dialog>
     )
