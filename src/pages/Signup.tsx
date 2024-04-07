@@ -78,11 +78,50 @@ const Signup = () => {
   const [verifying, setVerifying] = useState(false)
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    setVerifying(true);
     if (!isLoaded) return
+
+    // Start the sign-up process using the email and password provided
+    try {
+      await signUp.create({
+        firstName:values.firstname,
+        lastName:values.lastname,
+        emailAddress:values.email,
+        password:values.password
+      })
+
+      // Send the user an email with the verification code
+      await signUp.prepareEmailAddressVerification({
+        strategy: 'email_code',
+      })
+
+      // Set 'verifying' true to display second form
+      // and capture the OTP code
+      setVerifying(true)
+      toast("error",{
+        title: "OTP Sent.",
+        description: "Enter the OTP sent to your email to continue.",
+        classes: "border-green-500 border-2",
+        duration: 3000,
+        direction: "top"
+      });
+    } catch (error: any) {
+      // See https://clerk.com/docs/custom-flows/error-handling
+      // for more info on error handling
+      console.error(JSON.stringify(error, null, 2))
+      error.errors.map((err:any) => {
+        toast("error",{
+          title: `Error in ${err.meta.paramName}`,
+          description: `${err.message}`,
+          classes: "border-red-500 border-2",
+          duration: 3000,
+          direction: "top"
+        });
+      })
+    }
+  }
     // console.log(values);
     // const auth = getAuth();
   //   createUserWithEmailAndPassword(auth, values.email, values.password)
@@ -96,7 +135,7 @@ const Signup = () => {
   //         displayName: values.firstname, photoURL: ""
   //       }).then(() => {
   //         // Profile updated!
-  //         toast({
+  //         toast("error",{
   //           title: "Sign-Up Successful.",
   //           description: `Your account is ready. Please log in to continue.`,
   //           classes: "border-green-500 border-2",
@@ -106,7 +145,7 @@ const Signup = () => {
   //         // ...
   //       }).catch((error) => {
   //         // An error occurred
-  //         toast({
+  //         toast("error",{
   //           title: `Error ${error.code}`,
   //           description: error.message,
   //           classes: "border-red-500 border-2",
@@ -118,7 +157,7 @@ const Signup = () => {
   //       navigate("/home");
   //     })
   //     .catch((error) => {
-  //       toast({
+  //       toast("error",{
   //         title: `Error ${error.code}`,
   //         description: error.message,
   //         classes: "border-red-500 border-2",
@@ -145,7 +184,7 @@ const Signup = () => {
   //   // console.log("user",user);
   //   setUser(user);
   //   // IdP data available using getAdditionalUserInfo(result)
-  //   toast({
+  //   toast("error",{
   //     title: "Sign-Up Successful.",
   //     description: `Your account is ready. Please log in to continue.`,
   //     classes: "border-green-500 border-2",
@@ -160,7 +199,7 @@ const Signup = () => {
   //   // The AuthCredential type that was used.
   //   const credential = GoogleAuthProvider.credentialFromError(error);
   //   if(credential){}
-  //   toast({
+  //   toast("error",{
   //     title: `Error ${error.code}`,
   //     description: error.message,
   //     classes: "border-red-500 border-2",
@@ -179,7 +218,7 @@ const Signup = () => {
   //   const credential = FacebookAuthProvider.credentialFromResult(result);
   //   const accessToken = credential?.accessToken;
   //   if(accessToken){}
-  //   toast({
+  //   toast("error",{
   //     title: "Sign-Up Successful.",
   //     description: `Your account is ready. Please log in to continue.`,
   //     classes: "border-green-500 border-2",
@@ -198,7 +237,7 @@ const Signup = () => {
   //   // The AuthCredential type that was used.
   //   const credential = FacebookAuthProvider.credentialFromError(error);
   //   if(credential){}
-  //   toast({
+  //   toast("error",{
   //     title: `Error ${error.code}`,
   //     description: error.message,
   //     classes: "border-red-500 border-2",
@@ -206,7 +245,7 @@ const Signup = () => {
   //     direction: "top"
   //   });
   // });
-  }
+  // }
 
   return (
     <div className="w-full flex justify-center p-2 mt-4 dark:text-gray-200 dark:bg-zinc-950 h-screen ">
@@ -221,7 +260,13 @@ const Signup = () => {
         </div>
         <OtpDialog open={verifying} updateOpen={setVerifying}></OtpDialog>
         <div className="flex flex-row gap-2">
-        <Icon onClick={() => console.log("first")} icon="devicon:google" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
+        <Icon onClick={() =>  toast("error",{
+        title: `Error `,
+        description: "JSON.stringify(error, null, 2)",
+        classes: "border-red-500 border-2",
+        duration: 3000,
+        direction: "top"
+      })} icon="devicon:google" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1 cursor-pointer"/>
         <Icon onClick={() => document.getElementById("signup-submit")?.click()} icon="dashicons:email-alt" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
         <Icon onClick={() => console.log("facebookProviderSignIn")} icon="logos:facebook" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
         </div>
@@ -293,6 +338,7 @@ const Signup = () => {
                 </FormItem>
               )}
             />
+            <div id="clerk-captcha"></div>
             <Button id="signup-submit" className="flex w-[75%] justify-self-center font-pmedium" type="submit">Submit<Icon className="text-violet-500 scale-150" icon="majesticons:login-half-circle" width="60px" height="60px" /></Button>
           </form>
         </Form>

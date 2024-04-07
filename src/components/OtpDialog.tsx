@@ -7,8 +7,6 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { InputOTPForm } from "./ui/otpbox"
-import { useState } from "react";
-
 interface dialogParams{
     open:boolean
     updateOpen: (open: boolean) => void

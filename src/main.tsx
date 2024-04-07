@@ -96,6 +96,7 @@ const App = () => {
                     <Route path="examples" element={<Examples />} />
                     <Route path="template-gallery" element={<Gallery />} />
                   </Route>
+                  
                   <Route path="*" element={<NoPage />} />
                 </Route>
               </Routes>

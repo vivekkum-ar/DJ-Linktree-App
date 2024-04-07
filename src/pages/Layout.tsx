@@ -1,5 +1,6 @@
 import Footer from '@/components/footer';
 import Navbar from '@/components/Navbar';
+import { Toaster } from '@/components/ui/toaster';
 // import { Toaster } from '@/components/ui/toaster';
 import React from 'react'
 import { Outlet } from 'react-router-dom'
@@ -16,6 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ }) => {
     <Navbar className="dark:bg-zinc-950 "/>
     <div className="dark:bg-zinc-950 pt-8 max-w-screen-xl mx-auto ">
       <div className='my-0.5 flex flex-col justify-center items-center min-h-screen dark:bg-zinc-950 bg-inherit'>
+        <Toaster />
         <Outlet></Outlet>
       </div>
     </div>
