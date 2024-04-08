@@ -49,6 +49,7 @@ export const signUpEmail = atom({
   key: 'signUpEmail', // unique ID (with respect to other atoms/selectors)
   default: '', // default value (aka initial value)
 });
+
 const App = () => {
   setupIonicReact();
   const [user, setUser] = useState(null);

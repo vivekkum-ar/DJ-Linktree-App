@@ -62,7 +62,7 @@ const Signup = () => {
     email: z.string().email({
       message: "Please enter correct Email.",
     }),
-    password: z.string().min(6, {
+    password: z.string().min(8, {
       message: "Password must be at least 6 characters long.",
     })
   },

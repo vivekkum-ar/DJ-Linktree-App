@@ -264,14 +264,6 @@ const Home: React.FC<HomeProps> = ({ }) => {
   return (
     <div className='relative w-full min-h-screen flex flex-col items-center dark:bg-zinc-950'>
       <Jumbotron />
-      <header>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </header>
       <div className="w-full px-4 md:px-16 py-2 md:py-8 dark:bg-zinc-950 relative">
         {/* <div className="outline-1 outline outline-red-500 max-w-screen-xl mx-auto relative h-[30rem] box-container" >
           <AnimatedCard id={0} title='Customizable QR Codes' description='Unify your digital presence with a single, scannable QR code.'
