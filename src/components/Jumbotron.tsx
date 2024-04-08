@@ -1,5 +1,6 @@
 import { signUpEmail } from '@/main';
 import { Icon } from '@iconify/react/dist/iconify.js'
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 interface JumbotronProps {
   // Add your prop types here
@@ -7,6 +8,7 @@ interface JumbotronProps {
 
 const Jumbotron: React.FC<JumbotronProps> = ({}) => {
   const [signUpmail, setSignUpmail] = useRecoilState(signUpEmail);
+  const navigate = useNavigate();
   
   return (
     <section className="bg-white dark:bg-zinc-950 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] font-pregular">
@@ -29,7 +31,7 @@ const Jumbotron: React.FC<JumbotronProps> = ({}) => {
                 </svg>
               </div>
               <input type="email" onChange={(e) => {setSignUpmail(e.target.value)}} id="default-email" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-violet-500 focus:border-violet-500 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500" placeholder="Enter your email here..." required />
-              <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-violet-600 dark:hover:bg-violet-700 dark:focus:ring-violet-800">Sign up</button>
+              <button onClick={() => navigate("/signup")} type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-violet-600 dark:hover:bg-violet-700 dark:focus:ring-violet-800">Sign up</button>
             </div>
           </form>
         </div>

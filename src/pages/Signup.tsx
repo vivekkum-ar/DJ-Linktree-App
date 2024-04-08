@@ -100,7 +100,7 @@ const Signup = () => {
       // Set 'verifying' true to display second form
       // and capture the OTP code
       setVerifying(true)
-      toast("error",{
+      toast("Otp Sent",{
         title: "OTP Sent.",
         description: "Enter the OTP sent to your email to continue.",
         classes: "border-green-500 border-2",
