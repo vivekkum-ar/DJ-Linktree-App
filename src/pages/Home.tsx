@@ -375,13 +375,6 @@ const Home: React.FC<HomeProps> = ({ }) => {
       /* ---------------------------------------------------------------------------------------------- */
       /*                                         Text animation                                         */
       /* ---------------------------------------------------------------------------------------------- */}
-<Button onClick={() => toast("error", {
-        title: `Error `,
-        description: "JSON.stringify(error, null, 2)",
-        classes: "border-green-500 border-2",
-        duration: 3000,
-        direction: "top"
-        })}>sdsada</Button>
       <div className="font-pregular max-w-screen-xl text-center pt-12 dark:bg-zinc-950 bg-white">
         <h1 className="mb-4 text-3xl font-semibold tracking-tight round-card-trigger leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Add your links to your&nbsp;
           <div className='inline-flex min-w-[5em]'>
