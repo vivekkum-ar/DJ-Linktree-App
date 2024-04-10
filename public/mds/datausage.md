@@ -51,4 +51,4 @@ We may update this policy periodically. Changes will be communicated through our
 
 ## Contact Us
 
-If you have questions regarding this policy, please reach out to our support team at [Insert Contact Email].
+If you have questions regarding this policy, please reach out to our support team at mcleery2@gmail.com.

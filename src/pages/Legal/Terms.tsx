@@ -1,9 +1,13 @@
 import Markdown from 'markdown-to-jsx';
 import { useState, useEffect } from 'react';
+import { imageName } from './LegalLayout';
+import { useRecoilState } from 'recoil';
 
 const Terms = () => {
   
-      const [content, setContent] = useState("");
+  const [content, setContent] = useState("");
+  const [imgName, setImgName] = useRecoilState(imageName);
+  setImgName("terms")
     
       useEffect(() => {
         fetch("/mds/terms.md") // Fetch the file from the public folder
