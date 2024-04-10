@@ -77,4 +77,4 @@ By using our Services, you agree to the latest Terms. If you violate any of the 
 
 * We are not liable for any direct, indirect, incidental, or consequential damages arising from your use of the Services.
 
-If you have any questions about these Terms, please contact our Support team at [[support@djqr.com](mailto:support@djqr.com)].
+If you have any questions about these Terms, please contact our Support team at [mcleery2@gmail.com](mailto:mcleery2@gmail.com).

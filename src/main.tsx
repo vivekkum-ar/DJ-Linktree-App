@@ -30,6 +30,7 @@ import TemplatesLayout from './pages/Templates/TemplatesLayout';
 import CustomizationGuide from './pages/Templates/CustomizationGuide';
 import Examples from './pages/Templates/Examples';
 import Gallery from './pages/Templates/Gallery';
+import DataUsage from './pages/Legal/DataUsage';
 // Define the type for your context (if you have one)
 // type ContextType = {
 // Define properties, e.g., isLoggedIn: boolean;
@@ -86,8 +87,8 @@ const App = () => {
                     <Route path="services" element={<Services />} />
                   </Route>
                   <Route path="legal" element={<LegalLayout />} >
-                    {/* <Route index element={<LegalLayout />} /> */}
-                    <Route path="data-usage" element={<LegalLayout />} />
+                    <Route index element={<DataUsage />} />
+                    <Route path="data-usage" element={<DataUsage />} />
                     <Route path="terms-conditions" element={<Terms />} />
                     <Route path="privacy-policy" element={<Privacy />} />
                   </Route>
