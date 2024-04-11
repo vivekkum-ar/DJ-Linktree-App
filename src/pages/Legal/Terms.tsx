@@ -6,8 +6,8 @@ import { useRecoilState } from 'recoil';
 const Terms = () => {
   
   const [content, setContent] = useState("");
-  const [imgName, setImgName] = useRecoilState(imageName);
-  setImgName("terms")
+  const [, setImgName] = useRecoilState(imageName);
+  setImgName("terms");
     
       useEffect(() => {
         fetch("/mds/terms.md") // Fetch the file from the public folder

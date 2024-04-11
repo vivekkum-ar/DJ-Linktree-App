@@ -1,5 +1,4 @@
 import Breadcrumb from '@/components/Breadcrumb';
-import { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom'
 import { atom, useRecoilState } from 'recoil';
 
@@ -8,9 +7,9 @@ export const imageName = atom({
   default: 'about', // default value (aka initial value)
 });
 const LegalLayout = () => {
-    const [content, setContent] = useState("");
+    // const [content, setContent] = useState("");
     let location = useLocation();
-    const [imgName,setImgName] = useRecoilState(imageName);
+    const [imgName] = useRecoilState(imageName);
 
   return (
     <>

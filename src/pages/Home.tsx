@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 // import { IonButton, IonAlert } from '@ionic/react';
 import { useEffect, useState } from 'react'
-import { IDetectedBarcode, outline, Scanner } from '@yudiel/react-qr-scanner';
+import { IDetectedBarcode, outline } from '@yudiel/react-qr-scanner';
 // import { AspectRatio } from '@radix-ui/react-aspect-ratio';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -18,10 +18,9 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Card, CardContent } from '@/components/ui/card';
 // import { WebConnect } from '@/assets/lottie/VUaU1Z4EFW.lottie';
 import { Icon } from '@iconify/react/dist/iconify.js';
-import { useRecoilState } from 'recoil';
-import { signUpEmail } from '@/main';
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-import { toast } from '@/hooks/use-toast';
+// import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+// import { toast } from '@/hooks/use-toast';
+import anime from 'animejs';
 interface HomeProps {
   // Add your prop types here
   // theme: string;
@@ -32,7 +31,7 @@ gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 const Home: React.FC<HomeProps> = ({ }) => {
-  const [signUpmail, setSignUpmail] = useRecoilState(signUpEmail);
+  // const [signUpmail, setSignUpmail] = useRecoilState(signUpEmail);
 
   const cardsData = [
     {
@@ -137,105 +136,105 @@ const Home: React.FC<HomeProps> = ({ }) => {
     }
   ];
 
-  // useGSAP(() => {
-  //   // var tl = anime.timeline({
-  //   //   easing: 'easeOutExpo',
-  //   //   duration: 750,
-  //   //   autoplay:false
-  //   // });
-  //   var tl = anime.timeline({
-  //     easing: 'easeOutSine',
-  //     duration: 750,
-  //     autoplay: false
-  //   });
-  //   tl.add({
-  //     targets: "#img1",
-  //     translateX: 5,
-  //     translateY: -250
-  //   })
-  //   tl.add({
-  //     targets: "#img8",
-  //     translateX: 430,
-  //     translateY: -250
-  //   })
-  //   tl.add({
-  //     targets: "#img7",
-  //     translateX: 430,
-  //     translateY: 30
-  //   })
-  //   tl.add({
-  //     targets: "#img6",
-  //     translateX: 430,
-  //     translateY: 310
-  //   })
-  //   tl.add({
-  //     targets: "#img5",
-  //     translateX: 5,
-  //     translateY: 310
-  //   })
-  //   tl.add({
-  //     targets: "#img4",
-  //     translateX: -420,
-  //     translateY: 310
-  //   })
-  //   tl.add({
-  //     targets: "#img3",
-  //     translateX: -420,
-  //     translateY: 30
-  //   })
-  //   tl.add({
-  //     targets: "#img2",
-  //     translateX: -420,
-  //     translateY: -250
-  //   })
-  //   tl.add({
-  //     targets: "#img0",
-  //     scale: 1.5,
-  //   })
-  //   tl.add({
-  //     targets: ['#img1', '#img2', '#img3', '#img4', '#img5', '#img6', '#img7', '#img8'],
-  //     rotate: () => anime.random(-10, 10),
-  //   })
-  //   gsap.from(".boxa", {
-  //     scrollTrigger: {
-  //       trigger: ".box-container",
-  //       start: "top top+=10%",  // [trigger] [scroller] positions
-  //       end: "bottom+=200% 80%", // [trigger] [scroller] positions
-  //       // or relative amount: "+=500"
-  //       scrub: true, // or time (in seconds) to catch up
-  //       pin: true, // or selector or element to pin
-  //       markers: true, // only during development!
-  //     },
-  //     x: "110%",
-  //     stagger: {
-  //       amount: 1,
-  //       from: "start",
-  //     },
-  //   });
-  //   gsap.from(".round-card-target", {
-  //     scrollTrigger: {
-  //       trigger: ".round-card-trigger",
-  //       start: "top top",  // [trigger] [scroller] positions
-  //       end: "bottom+=200% center-=20%", // [trigger] [scroller] positions
-  //       // or relative amount: "+=500"
-  //       scrub: -1000, // or time (in seconds) to catch up
-  //       // pin: true, // or selector or element to pin
+  useGSAP(() => {
+    // var tl = anime.timeline({
+    //   easing: 'easeOutExpo',
+    //   duration: 750,
+    //   autoplay:false
+    // });
+    var tl = anime.timeline({
+      easing: 'easeOutSine',
+      duration: 750,
+      autoplay: false
+    });
+    tl.add({
+      targets: "#img1",
+      translateX: 5,
+      translateY: -250
+    })
+    tl.add({
+      targets: "#img8",
+      translateX: 430,
+      translateY: -250
+    })
+    tl.add({
+      targets: "#img7",
+      translateX: 430,
+      translateY: 30
+    })
+    tl.add({
+      targets: "#img6",
+      translateX: 430,
+      translateY: 310
+    })
+    tl.add({
+      targets: "#img5",
+      translateX: 5,
+      translateY: 310
+    })
+    tl.add({
+      targets: "#img4",
+      translateX: -420,
+      translateY: 310
+    })
+    tl.add({
+      targets: "#img3",
+      translateX: -420,
+      translateY: 30
+    })
+    tl.add({
+      targets: "#img2",
+      translateX: -420,
+      translateY: -250
+    })
+    tl.add({
+      targets: "#img0",
+      scale: 1.5,
+    })
+    tl.add({
+      targets: ['#img1', '#img2', '#img3', '#img4', '#img5', '#img6', '#img7', '#img8'],
+      rotate: () => anime.random(-10, 10),
+    })
+    gsap.from(".boxa", {
+      scrollTrigger: {
+        trigger: ".box-container",
+        start: "top top+=10%",  // [trigger] [scroller] positions
+        end: "bottom+=200% 80%", // [trigger] [scroller] positions
+        // or relative amount: "+=500"
+        scrub: true, // or time (in seconds) to catch up
+        pin: true, // or selector or element to pin
+        // markers: true, // only during development!
+      },
+      x: "110%",
+      stagger: {
+        amount: 1,
+        from: "start",
+      },
+    });
+    gsap.from(".round-card-target", {
+      scrollTrigger: {
+        trigger: ".round-card-trigger",
+        start: "top top",  // [trigger] [scroller] positions
+        end: "bottom+=200% center-=20%", // [trigger] [scroller] positions
+        // or relative amount: "+=500"
+        scrub: -1000, // or time (in seconds) to catch up
+        // pin: true, // or selector or element to pin
 
-  //       markers: true, // only during development!
-  //       onUpdate: (scroll: any) => {
-  //         // console.log("progress: ", scroll.pyrogress, "tl.progress: ", (scroll.progress * 100));
-  //         tl.seek(tl.duration * scroll.progress);
-  //       }
-  //     },
-  //     // x: "110%",
-  //     // stagger: {
-  //     //   amount: 1,
-  //     //   from: "start"
-  //     // },
-  //   }); // <-- automatically reverted
-  // },
-  //   // { scope: container }
-  // ) // <-- scope is for selector text (optional)
+        // markers: true, // only during development!
+        onUpdate: (scroll: any) => {
+          // console.log("progress: ", scroll.pyrogress, "tl.progress: ", (scroll.progress * 100));
+          tl.seek(tl.duration * scroll.progress);
+        }
+      },
+      // x: "110%",
+      // stagger: {
+      //   amount: 1,
+      //   from: "start"
+      // },
+    }); // <-- automatically reverted
+  },
+    // { scope: container }
+  ) // <-- scope is for selector text (optional)
 
   const customTracker = (detectedCodes: IDetectedBarcode[], ctx: CanvasRenderingContext2D): void => {
     // Clear the canvas
@@ -259,13 +258,13 @@ const Home: React.FC<HomeProps> = ({ }) => {
       }
     });
   };
-  const [pause, setPause] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [pause, setPause] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   return (
     <div className='relative w-full min-h-screen flex flex-col items-center dark:bg-zinc-950'>
       <Jumbotron />
       <div className="w-full px-4 md:px-16 py-2 md:py-8 dark:bg-zinc-950 relative">
-        {/* <div className="outline-1 outline outline-red-500 max-w-screen-xl mx-auto relative h-[30rem] box-container" >
+         <div className="max-w-screen-xl mx-auto relative h-[30rem] box-container" >
           <AnimatedCard id={0} title='Customizable QR Codes' description='Unify your digital presence with a single, scannable QR code.'
             features={[
               {
@@ -369,7 +368,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
               },
             ]
           } lottieSource={sharingHeart}></AnimatedCard>
-        </div> */}
+        </div> 
       </div>
       {
       /* ---------------------------------------------------------------------------------------------- */
@@ -406,7 +405,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
       {/* ---------------------------------------------------------------------------------------------- */}
       {/*                                         Testimonials                                         */}
       {/* ---------------------------------------------------------------------------------------------- */}
-      <div className="flex flex-row justify-content-center items-center max-w-screen-xl h-auto p-12 bg-white dark:bg-zinc-950">
+      <div className="flex flex-row justify-content-center items-center max-w-screen-xl h-auto pt-32 pb-20 bg-white dark:bg-zinc-950">
 
         <Carousel className="max-w-5xl px-12 dark:bg-zinc-950 ">
           <CarouselContent className=' '>
@@ -426,12 +425,12 @@ const Home: React.FC<HomeProps> = ({ }) => {
                           <div className='flex flex-row mt-4 gap-1s'>
                             {
                               Array.from({ length: Math.floor(item.number) }).map((_, index) => (
-                                <Icon icon={"fa-star"} className='text-amber-500'></Icon>
+                                <Icon key={index} icon={"fa-star"} className='text-amber-500'></Icon>
                               ))
                             }
                             {
                               Array.from({ length: 5 - Math.floor(item.number) }).map((_, index) => (
-                                <Icon icon={"fa-regular:star"} className='text-amber-500'></Icon>
+                                <Icon key={index} icon={"fa-regular:star"} className='text-amber-500'></Icon>
                               ))
                             }
                           </div>

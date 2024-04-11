@@ -11,14 +11,13 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Icon } from "@iconify/react"
 // import { auth } from "@/firebase"
-import { createUserWithEmailAndPassword, FacebookAuthProvider, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth"
+// import { createUserWithEmailAndPassword, FacebookAuthProvider, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth"
 import { useToast } from "@/hooks/use-toast"
-import { useContext, useEffect, useRef, useState } from "react"
-import { signUpEmail, UserContext } from "@/main"
-import { auth, provider } from "@/firebase"
+import {  useEffect, useRef, useState } from "react"
+import { signUpEmail } from "@/main"
 import Lottie from "lottie-react"
 import eyeAnimation from "@/assets/lottie/0FKUSvV16M.json"
 import eyeAnimationDark from "@/assets/lottie/0FKUSvV16M-dark.json"
@@ -26,13 +25,11 @@ import { LottieRefCurrentProps } from "lottie-react";
 import { useTheme } from "@/components/theme-provider";
 import { useRecoilState } from "recoil"
 import { useSignUp } from "@clerk/clerk-react"
-import { InputOTPForm } from "@/components/ui/otpbox"
 import OtpDialog from "@/components/OtpDialog"
 
 const Signup = () => {
-  const { setUser } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
-  const [signUpMail, setSignUpMail] = useRecoilState(signUpEmail);
+  const [signUpMail] = useRecoilState(signUpEmail);
   // const { isLoaded, signUp, setActive } = useSignUp()
 
   useEffect(() => {
@@ -50,7 +47,7 @@ const Signup = () => {
 
   const {theme} = useTheme();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { toast } = useToast();
   const formSchema = z.object({
     firstname: z.string().max(20, {
@@ -74,8 +71,9 @@ const Signup = () => {
       email: signUpMail,
     },
   })
-  const { isLoaded, signUp, setActive } = useSignUp()
+  const { isLoaded, signUp } = useSignUp()
   const [verifying, setVerifying] = useState(false)
+  // setActive();
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {

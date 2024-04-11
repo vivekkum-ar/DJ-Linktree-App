@@ -6,7 +6,7 @@ import { imageName } from './LegalLayout';
 const Terms = () => {
 
   const [content, setContent] = useState("");
-  const [imgName, setImgName] = useRecoilState(imageName);
+  const [, setImgName] = useRecoilState(imageName);
   setImgName("privacy")
 
   useEffect(() => {

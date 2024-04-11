@@ -1,5 +1,6 @@
 import { signUpEmail } from '@/main';
 import { Icon } from '@iconify/react/dist/iconify.js'
+// import { sign } from 'crypto';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 interface JumbotronProps {
@@ -9,7 +10,7 @@ interface JumbotronProps {
 const Jumbotron: React.FC<JumbotronProps> = ({}) => {
   const [signUpmail, setSignUpmail] = useRecoilState(signUpEmail);
   const navigate = useNavigate();
-  
+  console.log(signUpmail);
   return (
     <section className="bg-white dark:bg-zinc-950 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] font-pregular">
         <div className="md:py-8 py-1 px-4 mx-auto max-w-screen-xl text-center lg:py-16">

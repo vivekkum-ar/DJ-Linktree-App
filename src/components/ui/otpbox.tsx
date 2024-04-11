@@ -55,7 +55,7 @@ export function InputOTPForm() {
           duration: 3000,
           direction: "top"
         });
-        navigate('/dashboard')
+        navigate('/user/dashboard')
       } else {
         // If the status is not complete, check why. User may need to
         // complete further steps.

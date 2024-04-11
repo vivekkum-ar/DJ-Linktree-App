@@ -1,11 +1,17 @@
-import { SignedIn, UserButton } from "@clerk/clerk-react"
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react"
 
-const dashboard = () => {
+const Dashboard = () => {
     return (
-        <SignedIn>
-            <UserButton />
-        </SignedIn>
+        <>
+        Dashboard
+            <SignedOut>
+                <h1>Sign in to access the dashboard</h1>
+            </SignedOut>
+            <SignedIn>
+                <UserButton />
+            </SignedIn>
+        </>
     )
 }
 
-export default dashboard
+export default Dashboard

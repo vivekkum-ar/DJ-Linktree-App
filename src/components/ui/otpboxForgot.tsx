@@ -16,7 +16,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp"
-import { useAuth, useSignIn, useSignUp } from "@clerk/clerk-react"
+import { useSignIn } from "@clerk/clerk-react"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
@@ -40,13 +40,13 @@ export const InputOTPFormForgot: React.FC<dialogParams> = ({ changedPassword }) 
     },
   })
 
-  const { isSignedIn } = useAuth()
+  // const { isSignedIn } = useAuth()
   const { isLoaded, signIn, setActive } = useSignIn()
-  const [code, setCode] = useState('')
-  const [successfulCreation, setSuccessfulCreation] = useState(false)
+  // const [code, setCode] = useState('')
+  // const [successfulCreation, setSuccessfulCreation] = useState(false)
   const [secondFactor, setSecondFactor] = useState(false)
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    
+    console.log(secondFactor)
     if (!isLoaded) return;
 
     toast("success",{

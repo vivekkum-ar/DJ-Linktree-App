@@ -1,10 +1,10 @@
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
+    // DialogDescription,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
+    // DialogTrigger,
 } from "@/components/ui/dialog"
 import { InputOTPForm } from "./ui/otpbox"
 interface dialogParams{

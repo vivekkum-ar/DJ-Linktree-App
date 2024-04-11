@@ -13,8 +13,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "@iconify/react/dist/iconify.js"
-import { sendPasswordResetEmail } from "firebase/auth"
-import { auth } from "@/firebase"
+// import { sendPasswordResetEmail } from "firebase/auth"
+// import { auth } from "@/firebase"
 import { toast } from "@/hooks/use-toast"
 import { useAuth, useSignIn } from "@clerk/clerk-react"
 import { useState } from "react"
@@ -25,12 +25,14 @@ const Login = () => {
   const [successfulCreation, setSuccessfulCreation] = useState(false)
   const { isSignedIn } = useAuth()
   const [verifying,setVerifying] = useState(false)
-  const { isLoaded, signIn, setActive } = useSignIn()
+  const { isLoaded, signIn } = useSignIn()
   const navigate = useNavigate()
 
   if (!isLoaded) {
     return null
   }
+
+  console.log(successfulCreation);
 
   // If the user is already signed in,
   // redirect them to the home page

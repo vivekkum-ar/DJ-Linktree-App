@@ -14,10 +14,10 @@ import {
 import { Input } from "@/components/ui/input"
 import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "@iconify/react/dist/iconify.js"
-import { signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from "@/firebase"
-import { useContext, useEffect, useRef, useState } from "react"
-import { UserContext } from "@/main"
+// import { signInWithEmailAndPassword } from "firebase/auth"
+// import { auth } from "@/firebase"
+import {  useEffect, useRef, useState } from "react"
+// import { UserContext } from "@/main"
 import { toast } from "@/hooks/use-toast"
 import Lottie from "lottie-react"
 import eyeAnimation from "@/assets/lottie/0FKUSvV16M.json"
@@ -27,7 +27,7 @@ import { useTheme } from "@/components/theme-provider"
 import { useSignIn } from "@clerk/clerk-react"
 
 const Login = () => {
-  const { setUser } = useContext(UserContext);
+  // const { setUser } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
   const { theme } = useTheme();
   const { isLoaded, signIn, setActive } = useSignIn()
@@ -90,7 +90,7 @@ const Login = () => {
           duration: 3000,
           direction: "top"
         });
-        navigate('/dashboard')
+        navigate('/user/dashboard')
       } else {
         // If the status is not complete, check why. User may need to
         // complete further steps.
