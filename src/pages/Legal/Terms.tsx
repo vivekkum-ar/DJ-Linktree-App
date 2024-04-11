@@ -7,7 +7,7 @@ const Terms = () => {
   
   const [content, setContent] = useState("");
   const [, setImgName] = useRecoilState(imageName);
-  setImgName("terms");
+  setImgName("terms")
     
       useEffect(() => {
         fetch("/mds/terms.md") // Fetch the file from the public folder
