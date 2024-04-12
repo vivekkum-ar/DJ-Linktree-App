@@ -24,7 +24,7 @@ import eyeAnimation from "@/assets/lottie/0FKUSvV16M.json";
 import eyeAnimationDark from "@/assets/lottie/0FKUSvV16M-dark.json";
 import { LottieRefCurrentProps } from "lottie-react";
 import { useTheme } from "@/components/theme-provider";
-import { useSignIn } from "@clerk/clerk-react";
+import { useSignIn, useUser } from "@clerk/clerk-react";
 
 const Login = () => {
   // const { setUser } = useContext(UserContext);
@@ -32,6 +32,13 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const { theme } = useTheme();
   const { isLoaded, signIn, setActive } = useSignIn();
+  const { isSignedIn } = useUser();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate('/user/dashboard');
+    }
+  },[isSignedIn]);
 
   useEffect(() => {
     lottieRef.current?.stop();
@@ -44,8 +51,6 @@ const Login = () => {
   }, [showPassword]);
 
   const lottieRef = useRef<LottieRefCurrentProps | null>(null);
-
-  const navigate = useNavigate();
 
   const formSchema = z.object({
     email: z.string().email({
@@ -227,7 +232,7 @@ const Login = () => {
                   icon="svg-spinners:bars-rotate-fade"
                   className="text-violet-500 scale-150"
                   width="80px"
-                  height="80px"
+                  height="80px"                                            
                 />
               ) : (
                 <Icon

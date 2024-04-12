@@ -21,6 +21,9 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 // import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 // import { toast } from '@/hooks/use-toast';
 import anime from 'animejs';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '@clerk/clerk-react';
+// import { SignedIn, SignedOut } from '@clerk/clerk-react';
 interface HomeProps {
   // Add your prop types here
   // theme: string;
@@ -32,6 +35,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Home: React.FC<HomeProps> = ({ }) => {
   // const [signUpmail, setSignUpmail] = useRecoilState(signUpEmail);
+  const { isSignedIn } = useUser()
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate('/user/dashboard');
+    }
+  },[isSignedIn]);
 
   const cardsData = [
     {
@@ -261,6 +272,11 @@ const Home: React.FC<HomeProps> = ({ }) => {
   // const [pause, setPause] = useState(false);
   // const [isOpen, setIsOpen] = useState(false);
   return (
+    // <>
+    // <SignedIn>
+    //   You are signed in and cannot access this page.
+    // </SignedIn>
+    // <SignedOut>
     <div className='relative w-full min-h-screen flex flex-col items-center dark:bg-zinc-950'>
       <Jumbotron />
       <div className="w-full px-4 md:px-16 py-2 md:py-8 dark:bg-zinc-950 relative">
@@ -388,10 +404,10 @@ const Home: React.FC<HomeProps> = ({ }) => {
             cardsData.map((items, index) => {
               return (
                 <RoundAnimationCard
-                  key={index}
-                  classes={`absolute dark:bg-zinc-950 img${index} ${index == 0 ? "z-10" : "z-0"}`}
-                  animId={`img${index}`}
-                  title={items.title}
+                key={index}
+                classes={`absolute dark:bg-zinc-950 img${index} ${index == 0 ? "z-10" : "z-0"}`}
+                animId={`img${index}`}
+                title={items.title}
                   description={items.description}
                   imageUrl={`./images/${index + 1}.jpg`}>
                 </RoundAnimationCard>
@@ -408,6 +424,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
       <div className="flex flex-row justify-content-center items-center max-w-screen-xl h-auto pt-32 pb-20 bg-white dark:bg-zinc-950">
 
         <Carousel className="max-w-5xl px-12 dark:bg-zinc-950 ">
+          
           <CarouselContent className=' '>
             {
               testimonialsData.map((item, index) => (
@@ -450,9 +467,9 @@ const Home: React.FC<HomeProps> = ({ }) => {
       <div className="dark:bg-zinc-950 max-w-screen-xl h-full flex flex-row justify-center">
       </div>
       {
-      /* ---------------------------------------------------------------------------------------------- */
-      /*                                           Pre-footer                                           */
-      /* ---------------------------------------------------------------------------------------------- */}
+        /* ---------------------------------------------------------------------------------------------- */
+        /*                                           Pre-footer                                           */
+        /* ---------------------------------------------------------------------------------------------- */}
       <div className="dark:bg-zinc-950 max-w-screen-xl h-auto flex flex-col items-center justify-center py-24">
         <div className="my-auto -translate-x-24 mx-auto rounded-2xl max-w-screen-xl h-64 justify-self-start z-10">
           <span className='text-6xl top-8 w-full mx-auto relative font-pbold text-zinc-50 dark:text-zinc-400'>
@@ -472,10 +489,9 @@ const Home: React.FC<HomeProps> = ({ }) => {
     { /* ---------------------------------------------------------------------------------------------- */
       /*                                            <Footer/>                                           */
       /* ---------------------------------------------------------------------------------------------- */}
-
-
     </div>
-
+    // </SignedOut>
+      // </>
   )
 }
 export default Home

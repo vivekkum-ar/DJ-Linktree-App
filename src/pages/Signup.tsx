@@ -11,7 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "@iconify/react"
 // import { auth } from "@/firebase"
 // import { createUserWithEmailAndPassword, FacebookAuthProvider, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth"
@@ -24,14 +24,22 @@ import eyeAnimationDark from "@/assets/lottie/0FKUSvV16M-dark.json"
 import { LottieRefCurrentProps } from "lottie-react";
 import { useTheme } from "@/components/theme-provider";
 import { useRecoilState } from "recoil"
-import { useSignUp } from "@clerk/clerk-react"
+import { useSignUp, useUser } from "@clerk/clerk-react"
 import OtpDialog from "@/components/OtpDialog"
 import { CustomGoogleOneTap } from "@/components/CustomGoogleOneTap"
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [signUpMail] = useRecoilState(signUpEmail);
+  const [loading,setLoading] = useState(false);
   // const { isLoaded, signUp, setActive } = useSignUp()
+  const { isSignedIn } = useUser();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate('/user/dashboard');
+    }
+  },[isSignedIn]);
 
   useEffect(() => {
     lottieRef.current?.stop();
@@ -78,6 +86,7 @@ const Signup = () => {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     if (!isLoaded) return
@@ -106,6 +115,7 @@ const Signup = () => {
         duration: 3000,
         direction: "top"
       });
+      setLoading(false);
     } catch (error: any) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
@@ -119,6 +129,7 @@ const Signup = () => {
           direction: "top"
         });
       })
+      setLoading(false);
     }
   }
     // console.log(values);
@@ -263,9 +274,9 @@ const Signup = () => {
         <Icon onClick={() => document.getElementById("signup-submit")?.click()} icon="dashicons:email-alt" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
         <Icon onClick={() => console.log("facebookProviderSignIn")} icon="logos:facebook" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
         </div>
-        <CustomGoogleOneTap>
+        {/* <CustomGoogleOneTap>
       <h1>Google One Tap Example</h1>
-    </CustomGoogleOneTap>
+    </CustomGoogleOneTap> */}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full px-5">
             <div className="w-full mt-2 flex flex-row items-center justify-center p-0 m-0 space-x-6">
@@ -335,7 +346,23 @@ const Signup = () => {
               )}
             />
             <div id="clerk-captcha"></div>
-            <Button id="signup-submit" className="flex w-[75%] justify-self-center font-pmedium" type="submit">Submit<Icon className="text-violet-500 scale-150" icon="majesticons:login-half-circle" width="60px" height="60px" /></Button>
+            <Button id="signup-submit" className="flex w-[75%] justify-self-center font-pmedium" type="submit">Submit
+            {loading ? (
+                <Icon
+                  icon="svg-spinners:bars-rotate-fade"
+                  className="text-violet-500 scale-150"
+                  width="80px"
+                  height="80px"                                            
+                />
+              ) : (
+                <Icon
+                  icon="majesticons:login-half-circle"
+                  className="text-violet-500 scale-150"
+                  width="60px"
+                  height="60px"
+                />
+              )}
+            </Button>
           </form>
         </Form>
         <div className="flex flex-col gap-y-1 justify-center items-center ">
