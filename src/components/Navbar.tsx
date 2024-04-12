@@ -13,6 +13,7 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import { DarkModeToggle } from './mode-toggle';
 import DropdownMain from './ui/dropdown-menu';
+import { SignedIn, UserButton } from '@clerk/clerk-react';
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -168,6 +169,11 @@ export function NavigationMenu1() {
         <NavigationMenuItem>
         <DarkModeToggle></DarkModeToggle>
         </NavigationMenuItem>
+        <SignedIn>
+        <NavigationMenuItem className='flex flex-row ps-4 items-center'>
+        <UserButton />
+        </NavigationMenuItem>
+        </SignedIn>
       </NavigationMenuList>
     </NavigationMenu>
   )

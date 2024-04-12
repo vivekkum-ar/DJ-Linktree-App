@@ -26,6 +26,7 @@ import { useTheme } from "@/components/theme-provider";
 import { useRecoilState } from "recoil"
 import { useSignUp } from "@clerk/clerk-react"
 import OtpDialog from "@/components/OtpDialog"
+import { CustomGoogleOneTap } from "@/components/CustomGoogleOneTap"
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -258,16 +259,13 @@ const Signup = () => {
         </div>
         <OtpDialog open={verifying} updateOpen={setVerifying}></OtpDialog>
         <div className="flex flex-row gap-2">
-        <Icon onClick={() =>  toast("error",{
-        title: `Error `,
-        description: "JSON.stringify(error, null, 2)",
-        classes: "border-red-500 border-2",
-        duration: 3000,
-        direction: "top"
-      })} icon="devicon:google" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1 cursor-pointer"/>
+        <Icon onClick={() => ("")} icon="devicon:google" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1 cursor-pointer"/>
         <Icon onClick={() => document.getElementById("signup-submit")?.click()} icon="dashicons:email-alt" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
         <Icon onClick={() => console.log("facebookProviderSignIn")} icon="logos:facebook" className="h-10 w-10 hover:shadow-lg shadow-black rounded-full border border-1 border-slate-300 p-1"/>
         </div>
+        <CustomGoogleOneTap>
+      <h1>Google One Tap Example</h1>
+    </CustomGoogleOneTap>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full px-5">
             <div className="w-full mt-2 flex flex-row items-center justify-center p-0 m-0 space-x-6">
